@@ -58,7 +58,7 @@
 
 .explore-btn {
   padding: 10px 20px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border: none;
   color: white;
   font-size: 1.2rem;
@@ -68,7 +68,7 @@
 }
 
 .explore-btn:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 /* Mission and Vision Section */
@@ -77,11 +77,10 @@
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
-  background-color: #f5f5f5;
 }
 
 .card {
-  background-color: white;
+  background-color: var(--primary-color);
   padding: 30px;
   margin: 10px;
   border-radius: 8px;
@@ -93,18 +92,20 @@
 .card h2 {
   font-size: 2rem;
   margin-bottom: 15px;
+  color: white;
 }
 
 .card p {
   font-size: 1.2rem;
   margin-bottom: 20px;
+  color: white;
 }
 
 .outline-btn {
   padding: 10px 20px;
-  border: 2px solid var(--primary-color);
+  border: 2px solid white;
   background-color: transparent;
-  color: var(--primary-color);
+  color: white;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -112,8 +113,8 @@
 }
 
 .outline-btn:hover {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var();
+  color: var(--secondary-color);
 }
 
 /* Responsive for smaller screens */
@@ -129,5 +130,179 @@
 
   .text h1 {
     font-size: 2rem;
+  }
+}
+
+/* footer start */
+.footer {
+  background-color: #001233; /* Dark Blue background */
+  color: white;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 1rem;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #02f5dd; /* Secondary color */
+}
+
+.newsletter input[type="email"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  width: 60%;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #e76f51; /* Button color */
+  color: white;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  opacity: 0.8;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #02f5dd; /* Secondary color for hover */
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #ffffff50;
+  padding-top: 1rem;
+}
+/* footer end */
+
+/* why you choose us */
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 50px 0;
+  text-align: center;
+  background-color: var(--secondary-color);
+}
+
+.why-choose-us h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  color: white;
+}
+
+.why-choose-us h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  margin: 8px auto 0;
+}
+
+.why-choose-us p {
+  margin-bottom: 40px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+/* Container holding the features */
+.features {
+  display: flex;
+  justify-content: space-between; /* Spacing between the cards */
+  gap: 20px; /* Adds space between the cards */
+}
+
+/* Individual feature card */
+.feature {
+  background: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%; /* This sets each card to 30% of the parent container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+}
+
+/* Feature hover effect for 3D feel */
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure icons are centered */
+.icon {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column; /* Stack the cards vertically */
+    align-items: center; /* Center the cards */
+  }
+
+  .feature {
+    width: 90%; /* Take up most of the width on smaller screens */
+    margin-bottom: 20px;
   }
 }
