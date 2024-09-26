@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al Noor Bootcamp</title>
+    <!-- Link to the external CSS in the css folder -->
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-logo">Al Noor Bootcamp</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Our Courses</a>
+        <a href="#">Technical Mentor</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Apply</a>
+      </div>
+      <div class="toggle-menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    <!-- Image Slider Section -->
+    <section class="slider">
+      <div class="slides">
+        <div class="slide active">
+          <img src="images/slide1.jpg" alt="Slide 1" />
+        </div>
+        <div class="slide">
+          <img src="images/slide2.jpg" alt="Slide 2" />
+        </div>
+        <div class="slide">
+          <img src="images/slide3.jpg" alt="Slide 3" />
+        </div>
+      </div>
+      <!-- Fixed Text and Button (not moving) -->
+      <div class="text">
+        <h1>Welcome to Al Noor Bootcamp</h1>
+        <button class="explore-btn">Explore Our Courses</button>
+      </div>
+    </section>
+
+    <!-- Mission and Vision Section -->
+    <section class="mission-vision">
+      <div class="card">
+        <h2>Our Mission</h2>
+        <p>
+          To provide world-class education and training to the next generation
+          of software engineers.
+        </p>
+        <button class="outline-btn">Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Our Vision</h2>
+        <p>
+          Empowering students to create innovative solutions and impact the tech
+          world positively.
+        </p>
+        <button class="outline-btn">Learn More</button>
+      </div>
+    </section>
+
+    <!-- Link to the external JavaScript in the js folder -->
+    <script src="js/toggle.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

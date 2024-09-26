@@ -1,0 +1,95 @@
+/* Primary and secondary color */
+:root {
+  --primary-color: #0044cc; /* Blue */
+  --secondary-color: #02f5dd; /* Yellow */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.3;
+  transition: 0.3s;
+  text-decoration: underline;
+}
+
+/* Toggle Menu - hamburger icon */
+.toggle-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.toggle-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hidden initially for mobile view */
+    flex-direction: column;
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    height: 100vh; /* Cover the full height of the screen */
+    width: 250px; /* Width of the menu */
+    background-color: var(--primary-color); /* Blue background */
+    text-align: center;
+    padding-top: 50px; /* Spacing at the top */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Initially off-screen */
+    z-index: 100; /* Make sure it's above other elements */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu when active */
+    transform: translateX(0); /* Slide in from the right */
+  }
+
+  .nav-links a {
+    padding: 1rem;
+    width: 100%; /* Make links take full width */
+    margin: 0;
+    border-radius: 0; /* Remove border-radius on mobile */
+  }
+
+  .toggle-menu {
+    display: flex; /* Show toggle button on mobile */
+  }
+}
