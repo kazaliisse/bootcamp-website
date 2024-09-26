@@ -1,0 +1,127 @@
+/* General Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Header Section */
+section.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 100px;
+  background-color: #0a2a43;
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.header-content {
+  max-width: 50%;
+  animation: slideInLeft 1.5s ease-out;
+}
+
+.header h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.header p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #00c4ff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Button Hover Animation */
+.btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.header-image img {
+  max-width: 400px;
+  height: auto;
+  animation: slideInRight 1.5s ease-out;
+}
+
+/* About Us Section */
+section.about-us {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 100px;
+  background-color: #f4f4f4;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.about-us .content {
+  max-width: 50%;
+  animation: slideInLeft 1.5s ease-out;
+}
+
+.about-us h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.about-us .image-container img {
+  max-width: 400px;
+  height: auto;
+  animation: slideInRight 1.5s ease-out;
+}
