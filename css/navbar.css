@@ -1,7 +1,7 @@
 /* Primary and secondary color */
 :root {
-  --primary-color: #f2f0ef; /* Blue */
-  --secondary-color: #d2042d; /* */
+  --primary-color: #0f1035; /* Blue */
+  --secondary-color: #365486; /* */
 }
 body {
   margin: 0;
@@ -15,7 +15,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
   position: fixed; /* Fixed at the top of the page */
   top: 0;
@@ -36,7 +36,7 @@ body {
 }
 
 .nav-links a {
-  color: var(--secondary-color);
+  color: white;
   text-decoration: none;
   padding: 0.5rem 2rem;
   border-radius: 5px;
