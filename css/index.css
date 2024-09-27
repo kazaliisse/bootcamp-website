@@ -1,4 +1,14 @@
+/* Primary and secondary color */
+:root {
+  --primary-color: #f2f0ef; /* Blue */
+  --secondary-color: #d2042d; /* */
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
 
 /* Home page styles */
 
@@ -49,6 +59,18 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  animation: fadeInText 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .text h1 {
@@ -65,6 +87,16 @@
   cursor: pointer;
   transition: background-color 0.3s;
   border-radius: 8px;
+  animation: fadeInBtn 2s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInBtn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .explore-btn:hover {
@@ -77,6 +109,18 @@
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
+  animation: fadeInSection 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInSection {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
@@ -87,6 +131,18 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex-basis: 45%;
+  animation: slideInCard 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes slideInCard {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .card h2 {
@@ -135,10 +191,20 @@
 
 /* footer start */
 .footer {
-  background-color: #001233; /* Dark Blue background */
+  background-color: var(--primary-color); /* Dark Blue background */
   color: white;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
+  animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .container {
@@ -179,7 +245,7 @@
 }
 
 .footer-column ul li a:hover {
-  color: #02f5dd; /* Secondary color */
+  color: var(--secondary-color); /* Secondary color */
 }
 
 .newsletter input[type="email"] {
@@ -194,7 +260,7 @@
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #e76f51; /* Button color */
+  background-color: var(--secondary-color); /* Button color */
   color: white;
   cursor: pointer;
 }
@@ -215,7 +281,7 @@
 }
 
 .social-icons a:hover {
-  color: #02f5dd; /* Secondary color for hover */
+  color: var(--secondary-color); /* Secondary color for hover */
 }
 
 .contact-info p {
@@ -245,6 +311,18 @@
   position: relative;
   display: inline-block;
   color: white;
+  animation: zoomInTitle 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes zoomInTitle {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .why-choose-us h2::after {
@@ -260,6 +338,7 @@
   margin-bottom: 40px;
   color: white;
   font-size: 1.1rem;
+  animation: fadeInText 1.5s ease-in-out; /* Reusing fadeInText animation */
 }
 
 /* Container holding the features */
@@ -278,6 +357,18 @@
   width: 30%; /* This sets each card to 30% of the parent container */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: white;
+  animation: slideInFeature 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes slideInFeature {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Feature hover effect for 3D feel */

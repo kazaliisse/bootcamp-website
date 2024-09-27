@@ -1,3 +1,12 @@
+/* Primary and secondary color */
+:root {
+  --primary-color: #f2f0ef; /* Blue */
+  --secondary-color: #d2042d; /* */
+}
+html {
+  scroll-behavior: smooth;
+}
+
 /* General Animations */
 @keyframes fadeIn {
   from {
@@ -36,7 +45,7 @@ section.header {
   justify-content: space-between;
   align-items: center;
   padding: 60px 100px;
-  background-color: #0a2a43;
+  background-color: var(--primary-color);
   color: white;
   animation: fadeIn 1s ease-in-out;
 }
@@ -125,3 +134,224 @@ section.about-us {
   height: auto;
   animation: slideInRight 1.5s ease-out;
 }
+
+/* Styling for the "What We Do" Section */
+.what-we-do {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  animation: fadeInSection 1.5s ease-in-out; /* Section animation */
+}
+
+.what-we-do .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #111;
+  animation: fadeInText 1.5s ease-in-out; /* Title animation */
+}
+
+.what-we-do .section-description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #666;
+  animation: fadeInText 2s ease-in-out; /* Description animation */
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #111;
+  text-align: left;
+  animation: slideInCard 1.5s ease-in-out; /* Card animation */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card .icon {
+  font-size: 40px;
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.feature-card .learn-more {
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.feature-card .learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInSection {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInCard {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* footer start */
+.footer {
+  background-color: #001233; /* Dark Blue background */
+  color: white;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+  animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 1rem;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #02f5dd; /* Secondary color */
+}
+
+.newsletter input[type="email"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  width: 60%;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #e76f51; /* Button color */
+  color: white;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  opacity: 0.8;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #02f5dd; /* Secondary color for hover */
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #ffffff50;
+  padding-top: 1rem;
+}
+/* footer end */
