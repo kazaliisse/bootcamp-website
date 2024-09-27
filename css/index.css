@@ -9,6 +9,103 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  position: fixed; /* Fixed at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  z-index: 100; /* Ensure it's above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for visibility */
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.3;
+  transition: 0.3s;
+  text-decoration: underline;
+}
+
+/* Toggle Menu - hamburger icon */
+.toggle-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.toggle-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hidden initially for mobile view */
+    flex-direction: column;
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    height: 100vh; /* Cover the full height of the screen */
+    width: 250px; /* Width of the menu */
+    background-color: var(--primary-color); /* Blue background */
+    text-align: center;
+    padding-top: 50px; /* Spacing at the top */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Initially off-screen */
+    z-index: 100; /* Make sure it's above other elements */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu when active */
+    transform: translateX(0); /* Slide in from the right */
+  }
+
+  .nav-links a {
+    padding: 1rem;
+    width: 100%; /* Make links take full width */
+    margin: 0;
+    border-radius: 0; /* Remove border-radius on mobile */
+  }
+
+  .toggle-menu {
+    display: flex; /* Show toggle button on mobile */
+    padding-right: 1rem;
+  }
+}
+
 /* Home page styles */
 
 /* Slider Section */
@@ -190,7 +287,7 @@ html {
 
 /* footer start */
 .footer {
-  background-color: var(--primary-color); /* Dark Blue background */
+  background-color: var(--secondary-color); /* Dark Blue background */
   color: white;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
@@ -244,7 +341,7 @@ html {
 }
 
 .footer-column ul li a:hover {
-  color: var(--secondary-color); /* Secondary color */
+  color: var(--primary-color); /* Secondary color */
 }
 
 .newsletter input[type="email"] {
@@ -259,7 +356,7 @@ html {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--secondary-color); /* Button color */
+  background-color: var(--primary-color); /* Button color */
   color: white;
   cursor: pointer;
 }
@@ -280,7 +377,7 @@ html {
 }
 
 .social-icons a:hover {
-  color: var(--secondary-color); /* Secondary color for hover */
+  color: var(--primary-color); /* Secondary color for hover */
 }
 
 .contact-info p {
@@ -437,7 +534,7 @@ section.header {
   justify-content: space-between;
   align-items: center;
   padding: 60px 100px;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: white;
   animation: fadeIn 1s ease-in-out;
 }
@@ -488,9 +585,11 @@ section.header {
 }
 
 .header-image img {
+  margin-top: 4rem;
   max-width: 400px;
   height: auto;
   animation: slideInRight 1.5s ease-out;
+  border-radius: 50%;
 }
 
 /* Responsive Styles */
@@ -557,7 +656,6 @@ section.header {
     font-size: 12px;
   }
 }
-
 /* About Us Section */
 section.about-us {
   display: flex;
@@ -567,21 +665,18 @@ section.about-us {
   background-color: var(--secondary-color);
   animation: fadeIn 1s ease-in-out;
 }
-
 .about-us .content {
   max-width: 50%;
   animation: slideInLeft 1.5s ease-out;
 }
-
 .about-us h2 {
   font-size: 36px;
-  color: #333;
+  color: white;
   margin-bottom: 20px;
 }
-
 .about-us p {
   font-size: 16px;
-  color: #555;
+  color: white;
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -590,12 +685,13 @@ section.about-us {
   max-width: 400px;
   height: auto;
   animation: slideInRight 1.5s ease-out;
+  border-radius: 50%;
 }
 
 /* Styling for the "What We Offer" Section */
 .what-we-offer {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  background-color: var(--secondary-color);
   text-align: center;
   animation: fadeInSection 1.5s ease-in-out;
 }
@@ -603,14 +699,14 @@ section.about-us {
 .offer-section-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #111;
+  color: white;
   animation: fadeInText 1.5s ease-in-out;
 }
 
 .offer-section-description {
   font-size: 1.1rem;
   margin-bottom: 30px;
-  color: #666;
+  color: white;
   animation: fadeInText 2s ease-in-out;
 }
 
@@ -622,13 +718,13 @@ section.about-us {
 }
 
 .offer-feature-card {
-  background: #fff;
+  background: var(--primary-color);
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #111;
+  color: white;
   text-align: left;
   animation: slideInCard 1.5s ease-in-out;
 }
@@ -647,18 +743,18 @@ section.about-us {
 .offer-feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #111;
+  color: white;
 }
 
 .offer-feature-card p {
   font-size: 1rem;
-  color: #666;
+  color: white;
   margin-bottom: 15px;
 }
 
 .offer-learn-more {
   font-size: 1rem;
-  color: #007bff;
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
@@ -788,3 +884,313 @@ section.about-us {
     align-items: center;
   }
 } */
+
+/* Our Courses Section */
+.our-courses {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+  animation: fadeInSection 1.5s ease-in-out;
+}
+
+.our-courses h1 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.our-courses h1::after {
+  content: "";
+  width: 50px;
+  height: 4px;
+  background-color: #007bff;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.our-courses .description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  animation: fadeInText 2s ease-in-out;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.course-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #111;
+  text-align: center;
+  animation: slideInCard 1.5s ease-in-out;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.course-icon {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.course-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.course-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInSection {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInCard {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 992px) {
+  .course-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .our-courses h1 {
+    font-size: 2rem;
+  }
+
+  .our-courses .description {
+    font-size: 1rem;
+  }
+
+  .course-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .course-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .our-courses h1 {
+    font-size: 1.75rem;
+  }
+
+  .our-courses .description {
+    font-size: 0.9rem;
+  }
+
+  .course-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .course-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Technical Mentors Section */
+.technical-mentors {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  animation: fadeInMentors 1.5s ease-in-out;
+}
+
+.technical-mentors h4 {
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.technical-mentors h4::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background-color: #ff5722;
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+}
+
+.technical-mentors .description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+  animation: fadeInDescription 2s ease-in-out;
+}
+
+.mentor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mentor-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  animation: slideInMentor 1.5s ease-in-out;
+}
+
+.mentor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mentor-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.mentor-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.mentor-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInMentors {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDescription {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInMentor {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 992px) {
+  .mentor-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mentor-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .technical-mentors h4 {
+    font-size: 1.75rem;
+  }
+
+  .technical-mentors .description {
+    font-size: 1rem;
+  }
+
+  .mentor-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .mentor-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .technical-mentors h4 {
+    font-size: 1.5rem;
+  }
+
+  .technical-mentors .description {
+    font-size: 0.9rem;
+  }
+
+  .mentor-card h3 {
+    font-size: 1rem;
+  }
+
+  .mentor-card p {
+    font-size: 0.85rem;
+  }
+}
