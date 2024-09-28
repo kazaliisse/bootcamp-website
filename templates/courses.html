@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Al Noor Bootcamp</title>
     <!-- Link to the external CSS in the css folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-    <link rel="stylesheet" href="css/index.css" />
 
     <link
       rel="stylesheet"
@@ -16,18 +16,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
 
-    />
+    
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-logo">Al Noor Bootcamp</div>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="AboutUs.html">About Us</a>
-        <a href="courses.html">Our Courses</a>
-        <a href="mentors.html">Technical Mentor</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="applay.html">Apply</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('courses') }}">Our Courses</a>
+        <a href="{{ url_for('mentors') }}">Technical Mentor</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+        <a href="{{ url_for('apply') }}">Apply</a>
       </div>
       <div class="toggle-menu" onclick="toggleMenu()">
         <div></div>
@@ -35,79 +35,51 @@
         <div></div>
       </div>
     </nav>
+    
 
-    <!-- Image Slider Section -->
-    <section class="slider">
-      <div class="slides">
-        <div class="slide active">
-          <img src="images/slide1.jpg" alt="Slide 1" />
-        </div>
-        <div class="slide">
-          <img src="images/slide2.jpg" alt="Slide 2" />
-        </div>
-        <div class="slide">
-          <img src="images/slide3.jpg" alt="Slide 3" />
-        </div>
-      </div>
-      <!-- Fixed Text and Button (not moving) -->
-      <div class="text">
-        <h1>Welcome to Al Noor Bootcamp</h1>
-        <button class="explore-btn">Explore Our Courses</button>
-      </div>
-    </section>
-
-    <!-- Mission and Vision Section -->
-    <section class="mission-vision">
-      <div class="card">
-        <h2>Our Mission</h2>
-        <p>
-          To provide world-class education and training to the next generation
-          of software engineers.
-        </p>
-        <button class="outline-btn">Learn More</button>
-      </div>
-      <div class="card">
-        <h2>Our Vision</h2>
-        <p>
-          Empowering students to create innovative solutions and impact the tech
-          world positively.
-        </p>
-        <button class="outline-btn">Learn More</button>
-      </div>
-    </section>
-
-    <!-- why-choose-us -->
-
-    <section class="why-choose-us">
+    <section class="our-courses">
       <div class="container">
-        <h2>Why Choose Us</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <h1>Our Courses</h1>
+        <p class="description">
+          We provide the best courses for our customers to help them excel in
+          their fields.
         </p>
-        <div class="features">
-          <div class="feature">
-            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-            <h3>Flexible Timing</h3>
+        <div class="course-grid">
+          <div class="course-card">
+            <div class="course-icon">⚡</div>
+            <h3>Networking</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Learn the intricacies of computer networking and communication.
             </p>
           </div>
-          <div class="feature">
-            <div class="icon"><i class="fas fa-users"></i></div>
-            <h3>Expert Teachers</h3>
+          <div class="course-card">
+            <div class="course-icon">🎨</div>
+            <h3>UI/UX Design</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Master the art of creating user-friendly and attractive
+              interfaces.
             </p>
           </div>
-          <div class="feature">
-            <div class="icon"><i class="fas fa-clock"></i></div>
-            <h3>24/7 Live Support</h3>
+          <div class="course-card">
+            <div class="course-icon">📱</div>
+            <h3>App Development</h3>
+            <p>Develop mobile applications for Android and iOS platforms.</p>
+          </div>
+          <div class="course-card">
+            <div class="course-icon">💻</div>
+            <h3>Web Development</h3>
+            <p>Build responsive and dynamic websites from scratch.</p>
+          </div>
+          <div class="course-card">
+            <div class="course-icon">📝</div>
+            <h3>Wordpress</h3>
+            <p>Learn how to create and manage websites using WordPress.</p>
+          </div>
+          <div class="course-card">
+            <div class="course-icon">🛒</div>
+            <h3>E-Commerce</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Understand the workings of e-commerce platforms and strategies.
             </p>
           </div>
         </div>
@@ -178,7 +150,7 @@
     <!-- footer end -->
 
     <!-- Link to the external JavaScript in the js folder -->
-    <script src="js/toggle.js"></script>
+    <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
     <script src="js/index.js"></script>
     <!--   *****   JQuery Link   *****   -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

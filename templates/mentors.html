@@ -1,40 +1,71 @@
 <!DOCTYPE html>
-< lang="en">
+<lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Al Noor Bootcamp</title>
     <!-- Link to the external CSS in the css folder -->
 
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    />
+    
   </head>
-  <>
-    <nav class="navbar">
-      <div class="navbar-logo">Al Noor Bootcamp</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="AboutUs.html">About Us</a>
-        <a href="courses.html">Our Courses</a>
-        <a href="mentors.html">Technical Mentor</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="applay.html">Apply</a>
+  
+  <nav class="navbar">
+    <div class="navbar-logo">Al Noor Bootcamp</div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('about') }}">About Us</a>
+      <a href="{{ url_for('courses') }}">Our Courses</a>
+      <a href="{{ url_for('mentors') }}">Technical Mentor</a>
+      <a href="{{ url_for('contact') }}">Contact Us</a>
+      <a href="{{ url_for('apply') }}">Apply</a>
+    </div>
+    <div class="toggle-menu" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+  
+
+    <section class="technical-mentors">
+      <div class="container">
+        <h4>Mentors</h4>
+        <p class="description">We have the best technical mentors to guide and help you excel in your career.</p>
+        <div class="mentor-grid">
+          <div class="mentor-card">
+            <img src="mentor1.jpg" alt="Mentor 1">
+            <h3>John Doe</h3>
+            <p>Expert in Networking</p>
+          </div>
+          <div class="mentor-card">
+            <img src="mentor2.jpg" alt="Mentor 2">
+            <h3>Jane Smith</h3>
+            <p>UI/UX Design Specialist</p>
+          </div>
+          <div class="mentor-card">
+            <img src="mentor3.jpg" alt="Mentor 3">
+            <h3>Alex Brown</h3>
+            <p>App Development Guru</p>
+          </div>
+          <div class="mentor-card">
+            <img src="mentor4.jpg" alt="Mentor 4">
+            <h3>Sophia Lee</h3>
+            <p>Web Development Pro</p>
+          </div>
+        </div>
       </div>
-      <div class="toggle-menu" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </nav>
+    </section>
+    
   <!-- footer start -->
 
   <footer class="footer">
@@ -99,7 +130,7 @@
   <!-- footer end -->
 
   <!-- Link to the external JavaScript in the js folder -->
-  <script src="js/toggle.js"></script>
+  <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
   <script src="js/index.js"></script>
   <!--   *****   JQuery Link   *****   -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

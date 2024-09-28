@@ -1,0 +1,288 @@
+:root {
+  --primary-color: #365486; /* Blue */
+  --secondary-color: #0f1035; /* */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  position: fixed; /* Fixed at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  z-index: 100; /* Ensure it's above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for visibility */
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.3;
+  transition: 0.3s;
+  text-decoration: underline;
+}
+
+/* Toggle Menu - hamburger icon */
+.toggle-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.toggle-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hidden initially for mobile view */
+    flex-direction: column;
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    height: 100vh; /* Cover the full height of the screen */
+    width: 250px; /* Width of the menu */
+    background-color: var(--primary-color); /* Blue background */
+    text-align: center;
+    padding-top: 50px; /* Spacing at the top */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Initially off-screen */
+    z-index: 100; /* Make sure it's above other elements */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu when active */
+    transform: translateX(0); /* Slide in from the right */
+  }
+
+  .nav-links a {
+    padding: 1rem;
+    width: 100%; /* Make links take full width */
+    margin: 0;
+    border-radius: 0; /* Remove border-radius on mobile */
+  }
+
+  .toggle-menu {
+    display: flex; /* Show toggle button on mobile */
+    padding-right: 1rem;
+  }
+}
+/* Apply Section Styles */
+/* Apply Section Styles */
+.apply-section {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto; /* Center the section */
+}
+
+/* Heading Style */
+.apply-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+  color: #333; /* Darker text color */
+}
+
+/* Form Group Styles */
+.apply-form-group {
+  margin-bottom: 15px; /* Space between fields */
+}
+
+.apply-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555; /* Medium dark color */
+}
+
+.apply-form-group input,
+.apply-form-group select {
+  width: 100%; /* Full width for inputs */
+  padding: 10px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  transition: border-color 0.3s;
+}
+
+.apply-form-group input:focus,
+.apply-form-group select:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Submit Button Styles */
+#apply-submit-button {
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Add transition effects */
+  width: 100%; /* Full width button */
+}
+
+#apply-submit-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Success Message Styles */
+.popup {
+  display: none; /* Hidden by default */
+  background-color: #d4edda; /* Light green background */
+  color: #155724; /* Dark green text */
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* footer start */
+.footer {
+  background-color: var(--secondary-color); /* Dark Blue background */
+  color: white;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+  animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 1rem;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: var(--primary-color); /* Secondary color */
+}
+
+.newsletter input[type="email"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  width: 60%;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color); /* Button color */
+  color: white;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  opacity: 0.8;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--primary-color); /* Secondary color for hover */
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #ffffff50;
+  padding-top: 1rem;
+}
+/* footer end */
