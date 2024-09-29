@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import sys
 
 app = Flask(__name__)
 
@@ -27,4 +28,12 @@ def apply():
     return render_template('apply.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Set the port to use from command line argument, default to 5000
+    port = 5000
+    if len(sys.argv) > 1:
+        try:
+            port = int(sys.argv[1])
+        except ValueError:
+            print("Invalid port number. Using default port 5000.")
+    
+    app.run(debug=True, port=port)
