@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Contact List</h1>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Reason</th>
+          <th>Actions</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr>
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.first_name }}</td>
+          <td>{{ contact.last_name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.phone }}</td>
+          <td>{{ contact.reason }}</td>
+          <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
