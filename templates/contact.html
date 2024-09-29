@@ -1,155 +1,130 @@
 <!DOCTYPE html>
 < lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Al Noor Bootcamp</title>
-    <!-- Link to the external CSS in the css folder -->
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
 
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">Al Noor Bootcamp</div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('courses') }}">Our Courses</a>
+            <a href="{{ url_for('mentors') }}">Technical Mentor</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            <a href="{{ url_for('apply') }}">Apply</a>
+        </div>
+        <div class="toggle-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
     
-  </head>
-  
-  <nav class="navbar">
-    <div class="navbar-logo">Al Noor Bootcamp</div>
-    <div class="nav-links">
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('about') }}">About Us</a>
-      <a href="{{ url_for('courses') }}">Our Courses</a>
-      <a href="{{ url_for('mentors') }}">Technical Mentor</a>
-      <a href="{{ url_for('contact') }}">Contact Us</a>
-      <a href="{{ url_for('apply') }}">Apply</a>
-    </div>
-    <div class="toggle-menu" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-  
     <section id="contact-section" class="contact-us-section">
-      <h2>Get In Touch</h2>
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+        <h2>Get In Touch</h2>
+        <form id="contact-form" method="POST" action="/contact">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason for Contact</label>
+                <select id="reason" name="reason" required>
+                    <option value="">Choose your reason for contacting us</option>
+                    <option value="support">Customer Support</option>
+                    <option value="sales">Sales Inquiry</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+            </div>
+            <button type="submit" id="contact-submit">Contact Us</button>
+        </form>
+        
+        <!-- Success message -->
+        <div id="success-message" class="popup">
+            <p>Thank you for contacting us!</p>
         </div>
-        <div class="form-group">
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Email Address" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
-        </div>
-        <div class="form-group">
-          <label for="reason">Reason for Contact</label>
-          <select id="reason" name="reason" required>
-            <option value="">Choose your reason for contacting us</option>
-            <option value="support">Customer Support</option>
-            <option value="sales">Sales Inquiry</option>
-            <option value="feedback">Feedback</option>
-          </select>
-        </div>
-        <button type="submit" id="contact-submit">Contact Us</button>
-      </form>
-      
-      <!-- Success message -->
-      <div id="success-message" class="popup">
-        <p>Thank you for contacting us!</p>
-      </div>
     </section>
-    
-    
-    
-    
-    
-  <!-- footer start -->
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-row">
-        <!-- Programs Section -->
-        <div class="footer-column">
-          <h3>Programs</h3>
-          <ul>
-            <li><a href="#">Corporate</a></li>
-            <li><a href="#">One to One</a></li>
-            <li><a href="#">Consulting</a></li>
-          </ul>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <!-- Programs Section -->
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">Corporate</a></li>
+                        <li><a href="#">One to One</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <!-- Service Section -->
+                <div class="footer-column">
+                    <h3>Service</h3>
+                    <ul>
+                        <li><a href="#">Training</a></li>
+                        <li><a href="#">Coaching</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Section -->
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Newsletter Section -->
+                <div class="footer-column newsletter">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="email" placeholder="Email Address" required />
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <!-- Social Media Icons -->
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <p>Mobile: +91 7898474250</p>
+                        <p>Email: samthosh@crosscultureconnects.com</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2023 crosscultureconnects.com</p>
+            </div>
         </div>
-        <!-- Service Section -->
-        <div class="footer-column">
-          <h3>Service</h3>
-          <ul>
-            <li><a href="#">Training</a></li>
-            <li><a href="#">Coaching</a></li>
-            <li><a href="#">Consulting</a></li>
-          </ul>
-        </div>
-        <!-- Contact Section -->
-        <div class="footer-column">
-          <h3>Contact</h3>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <!-- Newsletter Section -->
-        <div class="footer-column newsletter">
-          <h3>Newsletter</h3>
-          <form>
-            <input type="email" placeholder="Email Address" required />
-            <button type="submit">Subscribe</button>
-          </form>
-          <!-- Social Media Icons -->
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-          <!-- Contact Info -->
-          <div class="contact-info">
-            <p>Mobile: +91 7898474250</p>
-            <p>Email: samthosh@crosscultureconnects.com</p>
-          </div>
-        </div>
-      </div>
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p>&copy; 2023 crosscultureconnects.com</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- footer end -->
-
-
-  <!-- Link to the external JavaScript in the js folder -->
-  <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-  <!--   *****   JQuery Link   *****   -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-  <!--   *****   Owl Carousel js Link  *****  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </body>
 </html>
-
