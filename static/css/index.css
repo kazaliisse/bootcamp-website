@@ -130,6 +130,7 @@ body {
   height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  display: none;
 }
 
 .slide img {
@@ -140,6 +141,7 @@ body {
 
 .slide.active {
   opacity: 1;
+  display: block;
 }
 
 /* Fixed text and button (not moving with slides) */

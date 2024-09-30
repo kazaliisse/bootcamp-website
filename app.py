@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
-import os
 
 app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'  # Change this to a strong secret key
 
 # Function to connect to the SQLite database
 def get_db_connection():
@@ -47,21 +46,73 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Route to view contacts in the admin panel
+# Route to view contacts in the admin panel with pagination
 @app.route('/admin/contacts')
 def view_contacts():
-    conn = get_db_connection()
-    contacts = conn.execute('SELECT * FROM contacts').fetchall()
-    conn.close()
-    return render_template('contacts.html', contacts=contacts)
+    search = request.args.get('search', '')  # Search functionality
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # Number of records per page
+    offset = (page - 1) * per_page
 
-# Route to view applications in the admin panel
+    conn = get_db_connection()
+    query = 'SELECT * FROM contacts WHERE first_name LIKE ? OR last_name LIKE ? LIMIT ? OFFSET ?'
+    search_param = f"%{search}%"
+    contacts = conn.execute(query, (search_param, search_param, per_page, offset)).fetchall()
+
+    # Get total number of contacts for pagination
+    total_query = 'SELECT COUNT(*) FROM contacts WHERE first_name LIKE ? OR last_name LIKE ?'
+    total = conn.execute(total_query, (search_param, search_param)).fetchone()[0]
+    conn.close()
+
+    return render_template('contacts.html', contacts=contacts, page=page, per_page=per_page, total=total)
+
+# Route to edit a contact
+@app.route('/admin/edit_contact/<int:id>', methods=['GET', 'POST'])
+def edit_contact(id):
+    conn = get_db_connection()
+    contact = conn.execute('SELECT * FROM contacts WHERE id = ?', (id,)).fetchone()
+
+    if request.method == 'POST':
+        first_name = request.form['first-name']
+        last_name = request.form['last-name']
+        email = request.form['email']
+        phone = request.form['phone']
+        reason = request.form['reason']
+
+        conn.execute('UPDATE contacts SET first_name = ?, last_name = ?, email = ?, phone = ?, reason = ? WHERE id = ?',
+                     (first_name, last_name, email, phone, reason, id))
+        conn.commit()
+        conn.close()
+
+        flash('Contact updated successfully!', 'success')
+        return redirect(url_for('view_contacts'))
+
+    conn.close()
+    return render_template('edit_contact.html', contact=contact)
+
+# Route to delete a contact
+@app.route('/admin/delete_contact/<int:id>', methods=['POST'])
+def delete_contact(id):
+    conn = get_db_connection()
+    conn.execute('DELETE FROM contacts WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+
+    flash('Contact deleted successfully!', 'success')
+    return redirect(url_for('view_contacts'))
+
+# Route to view applications in the admin panel with pagination
 @app.route('/admin/applications')
 def view_applications():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # Number of records per page
+    offset = (page - 1) * per_page
+
     conn = get_db_connection()
-    applications = conn.execute('SELECT * FROM applications').fetchall()
+    applications = conn.execute('SELECT * FROM applications LIMIT ? OFFSET ?', (per_page, offset)).fetchall()
     conn.close()
-    return render_template('applications.html', applications=applications)
+
+    return render_template('applications.html', applications=applications, page=page, per_page=per_page)
 
 # Route to edit an application
 @app.route('/admin/edit_application/<int:id>', methods=['GET', 'POST'])
@@ -96,7 +147,7 @@ def delete_application(id):
     conn.execute('DELETE FROM applications WHERE id = ?', (id,))
     conn.commit()
     conn.close()
-    
+
     flash('Application deleted successfully!', 'success')
     return redirect(url_for('view_applications'))
 
@@ -144,7 +195,6 @@ def contact():
         except Exception as e:
             flash(f'Error: {e}', 'danger')
 
-        # After saving the form data, redirect to the contact page with a success message
         return redirect(url_for('contact'))
 
     return render_template('contact.html')
@@ -154,7 +204,6 @@ def contact():
 def apply():
     if request.method == 'POST':
         try:
-            # Check if the request is JSON
             if request.is_json:
                 data = request.get_json()
                 first_name = data['firstName']
@@ -195,4 +244,3 @@ def apply():
 if __name__ == '__main__':
     init_db()  # Initialize the database and create tables if they don't exist
     app.run(debug=True, port=5001)  # Change the port to 5001
-
