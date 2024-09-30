@@ -34,7 +34,7 @@
           <td>{{ application.gender }}</td>
           <td>{{ application.county }}</td>
           <td>{{ application.course }}</td>
-          <td>
+          <td class="actions">
             <form
               action="{{ url_for('edit_application', id=application.id) }}"
               method="GET"
@@ -42,7 +42,6 @@
             >
               <button class="edit" type="submit">Edit</button>
             </form>
-            |
             <form
               action="{{ url_for('delete_application', id=application.id) }}"
               method="POST"

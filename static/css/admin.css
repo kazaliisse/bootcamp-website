@@ -68,6 +68,7 @@ button.edit {
   padding: 5px 8px; /* Consistent padding */
   border-radius: 4px; /* Match the border radius */
   cursor: pointer; /* Pointer cursor */
+  margin-right: 10px; /* Add space between edit and delete buttons */
 }
 
 button.edit:hover {
@@ -86,6 +87,13 @@ button.delete {
 
 button.delete:hover {
   background-color: #c82333; /* Darker red on hover */
+}
+
+/* Align buttons horizontally in the Actions column */
+.actions {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  align-items: center; /* Vertically center the buttons */
 }
 
 /* Form Styling */
