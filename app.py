@@ -4,7 +4,8 @@ import sqlite3
 app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
-app.secret_key = 'your_secret_key'  # Change this to a strong secret key
+app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
+
 
 # Function to connect to the SQLite database
 def get_db_connection():
