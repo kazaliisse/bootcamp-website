@@ -1,10 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_mail import Mail, Message  # Importing Flask-Mail
 import sqlite3
 
 app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
 app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
+
+# Email configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # or your preferred SMTP server
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'noorhafowbare@gmail.com'  # Replace with your email
+app.config['MAIL_PASSWORD'] = 'qjmnwlgthsskjbwy'  # Replace with your app password
+
+# Initialize Mail
+mail = Mail(app)
 
 
 # Function to connect to the SQLite database
@@ -46,6 +57,20 @@ def init_db():
 
     conn.commit()
     conn.close()
+
+    # Function to send confirmation email
+def send_confirmation_email(email, first_name):
+    try:
+        msg = Message(
+            'Congratulations on Your Admission!',
+            sender='noorhafowbare@gmail.com',  # Your email address
+            recipients=[email]
+        )
+        msg.body = f"Hello {first_name},\n\nCongratulations! Your admission application has been received successfully. We are excited to have you join us.\n\nBest regards,\nThe Team"
+        mail.send(msg)
+        print("Confirmation email sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
 
 # Route to view contacts in the admin panel with pagination
 @app.route('/admin/contacts')
@@ -231,8 +256,10 @@ def apply():
             conn.commit()
             conn.close()
 
-            flash('Application form submitted successfully!', 'success')
+              # Send confirmation email
+            send_confirmation_email(email, first_name)
 
+            flash('Application form submitted successfully! A confirmation email has been sent.', 'success')
             return {"message": "Application submitted successfully!"}, 200
 
         except Exception as e:
