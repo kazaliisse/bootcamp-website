@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+
 from flask_mail import Mail, Message  # Importing Flask-Mail
 import sqlite3
 
@@ -6,6 +7,10 @@ app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
 app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
+
+#open
+
+#close
 
 # Email configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # or your preferred SMTP server
@@ -270,5 +275,5 @@ def apply():
 
 # Initialize the database and run the app
 if __name__ == '__main__':
-    init_db()  # Initialize the database and create tables if they don't exist
-    app.run(debug=True, port=5001)  # Change the port to 5001
+    init_db()  
+    app.run(debug=True, port=5001)  
