@@ -55,10 +55,12 @@
           />
         </div>
       </div>
-      <!-- Fixed Text and Button (not moving) -->
+      <!-- Home Page -->
       <div class="text">
         <h1>Welcome to Al Noor Bootcamp</h1>
-        <button class="explore-btn">Explore Our Courses</button>
+        <a href="{{ url_for('apply') }}">
+          <button class="explore-btn">Apply Our Courses</button>
+        </a>
       </div>
     </section>
 
@@ -88,32 +90,33 @@
       <div class="container">
         <h2>Why Choose Us</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Choose Al Noor Bootcamp for hands-on, industry-focused training that
+          prepares you for real-world success. Our expert-led courses provide
+          the skills and confidence you need to excel in today's tech landscape.
         </p>
         <div class="features">
           <div class="feature">
             <div class="icon"><i class="fas fa-calendar-alt"></i></div>
             <h3>Flexible Timing</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Learn at your own pace with flexible schedules designed to fit
+              around your life and commitments.
             </p>
           </div>
           <div class="feature">
             <div class="icon"><i class="fas fa-users"></i></div>
             <h3>Expert Teachers</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Gain insights and guidance from experienced instructors dedicated
+              to your success.
             </p>
           </div>
           <div class="feature">
             <div class="icon"><i class="fas fa-clock"></i></div>
             <h3>24/7 Live Support</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Access support anytime you need it, with our team available around
+              the clock to assist you.
             </p>
           </div>
         </div>
@@ -147,11 +150,12 @@
           <div class="footer-column">
             <h3>Contact</h3>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Our Courses</a></li>
+              <li><a href="{{ url_for('home') }}">Home</a></li>
+              <li><a href="{{ url_for('about') }}">About</a></li>
+              <li><a href="{{ url_for('courses') }}">Our Courses</a></li>
               <li><a href="{{ url_for('mentors') }}">Technical mentors</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="{{ url_for('contact') }}">Contact</a></li>
+              <li><a href="{{ url_for('apply') }}">Apply</a></li>
             </ul>
           </div>
           <!-- Newsletter Section -->
