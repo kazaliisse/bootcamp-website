@@ -133,17 +133,27 @@ def delete_contact(id):
     return redirect(url_for('view_contacts'))
 
 # Route to view applications in the admin panel with pagination
+# Route to view applications in the admin panel with pagination and search
 @app.route('/admin/applications')
 def view_applications():
+    search = request.args.get('search', '')  # Search functionality
     page = request.args.get('page', 1, type=int)
     per_page = 10  # Number of records per page
     offset = (page - 1) * per_page
 
     conn = get_db_connection()
-    applications = conn.execute('SELECT * FROM applications LIMIT ? OFFSET ?', (per_page, offset)).fetchall()
+    search_query = f"%{search}%"  # Format search term for SQL LIKE
+    applications = conn.execute(
+        'SELECT * FROM applications WHERE first_name LIKE ? OR last_name LIKE ? LIMIT ? OFFSET ?',
+        (search_query, search_query, per_page, offset)
+    ).fetchall()
+
+    # Get total number of applications for pagination
+    total_query = 'SELECT COUNT(*) FROM applications WHERE first_name LIKE ? OR last_name LIKE ?'
+    total = conn.execute(total_query, (search_query, search_query)).fetchone()[0]
     conn.close()
 
-    return render_template('applications.html', applications=applications, page=page, per_page=per_page)
+    return render_template('applications.html', applications=applications, page=page, per_page=per_page, total=total, search=search)
 
 # Route to edit an application
 @app.route('/admin/edit_application/<int:id>', methods=['GET', 'POST'])

@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("application-form");
   const successMessage = document.getElementById("application-success-message");
+  const loadingMessage = document.getElementById("application-loading-message");
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission
+
+    // Show loading message
+    loadingMessage.style.display = "block";
 
     // Gather form data
     const formData = new FormData(form);
@@ -27,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(data),
       });
 
+      // Hide loading message
+      loadingMessage.style.display = "none";
+
       if (response.ok) {
         // Show success message
         successMessage.style.display = "block";
@@ -41,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
+      loadingMessage.style.display = "none"; // Hide loading message in case of error
     }
   });
 });
