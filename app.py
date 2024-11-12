@@ -8,16 +8,14 @@ app = Flask(__name__)
 # Secret key for session management (required for flash messages)
 app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
 
-#open
 
-#close
 
 # Email configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # or your preferred SMTP server
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'noorhafowbare@gmail.com'  # Replace with your email
-app.config['MAIL_PASSWORD'] = 'qjmnwlgthsskjbwy'  # Replace with your app password
+app.config['MAIL_USERNAME'] = 'noorhafowbare@gmail.com'  
+app.config['MAIL_PASSWORD'] = 'qjmnwlgthsskjbwy'  
 
 # Initialize Mail
 mail = Mail(app)
@@ -64,14 +62,14 @@ def init_db():
     conn.close()
 
     # Function to send confirmation email
-def send_confirmation_email(email, first_name):
+def send_confirmation_email(email, first_name, course):
     try:
         msg = Message(
             'Congratulations on Your Admission!',
-            sender='noorhafowbare@gmail.com',  # Your email address
+            sender='noorhafowbare@gmail.com',  
             recipients=[email]
         )
-        msg.body = f"Hello {first_name},\n\nCongratulations! Your admission application has been received successfully. We are excited to have you join us.\n\nBest regards,\nThe Team"
+        msg.body = f"Hello {first_name},\n\nCongratulations! Your admission application for the {course} course has been received successfully. We are excited to have you join us.\n\nBest regards,\nThe Team"
         mail.send(msg)
         print("Confirmation email sent successfully!")
     except Exception as e:
@@ -80,9 +78,11 @@ def send_confirmation_email(email, first_name):
 # Route to view contacts in the admin panel with pagination
 @app.route('/admin/contacts')
 def view_contacts():
-    search = request.args.get('search', '')  # Search functionality
+    # Search functionality
+    search = request.args.get('search', '')  
     page = request.args.get('page', 1, type=int)
-    per_page = 10  # Number of records per page
+    # Number of records per page
+    per_page = 10  
     offset = (page - 1) * per_page
 
     conn = get_db_connection()
@@ -244,7 +244,9 @@ def contact():
 @app.route('/apply', methods=['GET', 'POST'])
 def apply():
     if request.method == 'POST':
+        
         try:
+            
             if request.is_json:
                 data = request.get_json()
                 first_name = data['firstName']
@@ -272,7 +274,7 @@ def apply():
             conn.close()
 
               # Send confirmation email
-            send_confirmation_email(email, first_name)
+            send_confirmation_email(email, first_name, course)
 
             flash('Application form submitted successfully! A confirmation email has been sent.', 'success')
             return {"message": "Application submitted successfully!"}, 200
