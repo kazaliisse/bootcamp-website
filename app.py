@@ -284,6 +284,12 @@ def apply():
             return {"message": str(e)}, 500
 
     return render_template('apply.html')
+#auth
+@app.route('/auth')
+def auth():
+    # Your view logic here
+    return render_template('auth.html')
+
 
 # Initialize the database and run the app
 if __name__ == '__main__':
