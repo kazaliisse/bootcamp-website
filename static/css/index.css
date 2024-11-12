@@ -80,6 +80,7 @@ body {
     height: 100vh; /* Cover the full height of the screen */
     width: 250px; /* Width of the menu */
     background-color: var(--primary-color); /* Blue background */
+    opacity: 0.7;
     text-align: center;
     padding-top: 50px; /* Spacing at the top */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
