@@ -327,6 +327,9 @@ body {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+.footer-column p {
+  text-align: justify;
+}
 
 .footer-column ul {
   list-style: none;
