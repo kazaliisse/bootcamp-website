@@ -55,3 +55,123 @@ function validateReset() {
 
   return true;
 }
+
+// Handle form submission for Sign-up
+document.addEventListener("DOMContentLoaded", function () {
+  // Switch to Sign-up form when the Sign-up button is clicked
+  const signupButton = document.getElementById("signupButton");
+  if (signupButton) {
+    signupButton.addEventListener("click", function () {
+      switchTab("signup");
+    });
+  }
+
+  // Handle form submission for Sign-up
+  const signupForm = document.getElementById("signupForm");
+  if (signupForm) {
+    signupForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+      const name = document.getElementById("signupName").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+      const confirmPassword = document.getElementById(
+        "signupConfirmPassword"
+      ).value;
+
+      // Validation
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      // Make an AJAX request to the Flask backend for Sign-up
+      fetch("/auth/signup", {
+        // Updated API endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Sign up successful! Please log in.");
+            switchTab("login"); // Switch to the login form after sign-up
+          } else {
+            alert("Sign up failed: " + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  }
+
+  // Handle form submission for Login
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      // Make an AJAX request to the Flask backend for Login
+      fetch("/auth/login", {
+        // Updated API endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            window.location.href = "/home"; // Redirect to dashboard or homepage
+          } else {
+            alert("Login failed: " + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  }
+});
+
+// Function to handle the password reset form submission
+async function validateReset() {
+  // Prevent default form submission
+  event.preventDefault();
+
+  // Get the email from the form input
+  const email = document.getElementById("resetEmail").value;
+
+  try {
+    const response = await fetch("/password_reset", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert(result.message); // Notify user of success
+    } else {
+      alert(result.message); // Notify user of failure
+    }
+  } catch (error) {
+    alert("An error occurred. Please try again later.");
+  }
+}

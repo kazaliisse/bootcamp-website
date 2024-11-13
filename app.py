@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from auth import auth  # Importing the auth blueprint
 
 from flask_mail import Mail, Message  # Importing Flask-Mail
 import sqlite3
@@ -7,6 +8,10 @@ app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
 app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
+# Register the auth blueprint with the app
+app.register_blueprint(auth, url_prefix='/auth')
+
+
 
 
 
@@ -192,10 +197,19 @@ def delete_application(id):
     flash('Application deleted successfully!', 'success')
     return redirect(url_for('view_applications'))
 
-# Home page route
+# Root route to redirect to home
 @app.route('/')
+def root():
+    return redirect(url_for('home'))
+
+# Home route that checks for user authentication
+@app.route('/home')
 def home():
-    return render_template('index.html')
+    # Ensure user is authenticated
+    if 'user_id' not in session:  # If user is not logged in
+        return redirect(url_for('auth.login'))  # Redirect to login
+    return render_template('index.html')  # Render home page for authenticated users
+
 
 # About Us page route
 @app.route('/about')
@@ -215,8 +229,12 @@ def mentors():
 # Contact Us page route with POST method to handle form submission
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    if request.method == 'POST':
+    if 'user_id' not in session:  # Check if the user is logged in
+        return redirect(url_for('auth.login'))  # Redirect to login page if not logged in
+
+    if request.method == 'POST':  # If form is submitted
         try:
+            # Retrieve form data
             first_name = request.form['first-name']
             last_name = request.form['last-name']
             email = request.form['email']
@@ -226,23 +244,32 @@ def contact():
             # Connect to the database and save the form data
             conn = get_db_connection()
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO contacts (first_name, last_name, email, phone, reason) VALUES (?, ?, ?, ?, ?)",
-                           (first_name, last_name, email, phone, reason))
+            cursor.execute("""
+                INSERT INTO contacts (first_name, last_name, email, phone, reason)
+                VALUES (?, ?, ?, ?, ?)
+            """, (first_name, last_name, email, phone, reason))
             conn.commit()
             conn.close()
 
-            flash('Contact form submitted successfully!', 'success')
+            flash('Contact form submitted successfully!', 'success')  # Success message
 
         except Exception as e:
-            flash(f'Error: {e}', 'danger')
+            flash(f'Error: {e}', 'danger')  # Error message if something goes wrong
 
-        return redirect(url_for('contact'))
+        return redirect(url_for('contact'))  # Redirect to the contact page after form submission
 
+    # For GET request, render the contact form
     return render_template('contact.html')
+
+
 
 # Apply page route with POST method to handle form submission
 @app.route('/apply', methods=['GET', 'POST'])
 def apply():
+    # Ensure user is logged in before accessing the apply page
+    if 'user_id' not in session:  # Check if user is logged in
+        flash('You must be logged in to apply.', 'warning')
+        return redirect(url_for('auth.login'))  # Redirect to login page if not logged in
     if request.method == 'POST':
         
         try:

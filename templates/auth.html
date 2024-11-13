@@ -18,6 +18,23 @@
     />
   </head>
   <body>
+    <style>
+      .logout-button {
+    background-color: #ff4d4d; /* Red color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+    </style>
     <nav class="navbar">
       <div class="navbar-logo">Al Noor Bootcamp</div>
       <div class="nav-links">
@@ -28,6 +45,11 @@
         <a href="{{ url_for('contact') }}">Contact Us</a>
         <a href="{{ url_for('apply') }}">Apply</a>
         <a href="{{ url_for('auth') }}">login</a>
+        {% if 'user_id' in session %}
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+    {% endif %}
       </div>
       <div class="toggle-menu" onclick="toggleMenu()">
         <div></div>
@@ -35,8 +57,8 @@
         <div></div>
       </div>
     </nav>
+    <!-- Auth Section -->
     <section>
-      <!-- Auth Section -->
       <div class="auth-container">
         <!-- Login Form -->
         <div id="login-form" class="auth-form active">
@@ -56,7 +78,9 @@
             </p>
             <p>
               Don't have an account?
-              <a href="#" onclick="switchTab('signup')">Sign Up</a>
+              <a href="#" onclick="switchTab('signup')" id="signupButton"
+                >Sign Up</a
+              >
             </p>
           </form>
         </div>
@@ -93,23 +117,22 @@
         </div>
 
         <!-- Reset Password Form -->
-        <div id="reset-form" class="auth-form">
-          <h2>Reset Password</h2>
-          <form id="resetForm" onsubmit="return validateReset()">
-            <input
-              type="email"
-              id="resetEmail"
-              placeholder="Enter your email"
-              required
-            />
-            <button type="submit">Send Reset Link</button>
-            <p>
-              Remembered your password?
-              <a href="#" onclick="switchTab('login')">Login</a>
-            </p>
-          </form>
-        </div>
-      </div>
+<div id="reset-form" class="auth-form">
+  <h2>Reset Password</h2>
+  <form id="resetForm" onsubmit="return validateReset()">
+      <input
+          type="email"
+          id="resetEmail"
+          placeholder="Enter your email"
+          required
+      />
+      <button type="submit">Send Reset Link</button>
+      <p>
+          Remembered your password?
+          <a href="#" onclick="switchTab('login')">Login</a>
+      </p>
+  </form>
+</div>
     </section>
 
     <footer class="footer">
@@ -165,7 +188,7 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/apply.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
   </body>
 </html>
