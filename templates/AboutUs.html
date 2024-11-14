@@ -29,6 +29,11 @@
         <a href="{{ url_for('contact') }}">Contact Us</a>
         <a href="{{ url_for('apply') }}">Apply</a>
         <a href="{{ url_for('auth') }}">login</a>
+        {% if 'user_id' in session %}
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        {% endif %}
       </div>
       <div class="toggle-menu" onclick="toggleMenu()">
         <div></div>

@@ -68,8 +68,13 @@
         <a href="{{ url_for('courses') }}">Our Courses</a>
         <a href="{{ url_for('mentors') }}">Technical Mentor</a>
         <a href="{{ url_for('contact') }}">Contact Us</a>
-        <a href="{{ url_for('apply') }}">Apply</a>
+        <a href="{{ url_for('apply') }}" onclick="showLoading()">Apply</a>
         <a href="{{ url_for('auth') }}">login</a>
+        {% if 'user_id' in session %}
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        {% endif %}
       </div>
       <div class="toggle-menu" onclick="toggleMenu()">
         <div></div>
@@ -83,9 +88,9 @@
       <div class="loader"></div>
     </div>
 
-    <section id="apply-section" class="apply-section" onsubmit="showLoading()">
+    <section id="apply-section" class="apply-section" >
       <h2>Apply Now</h2>
-      <form id="application-form" method="POST" action="/apply">
+      <form id="application-form" method="POST" action="/apply" onsubmit="submitApplication(event)">
         <div class="form-group apply-form-group">
           <label for="first-name">First Name</label>
           <input
@@ -281,17 +286,51 @@
     </footer>
 
     <script>
+      // Show loading screen function
       function showLoading() {
-        document.getElementById('loading-screen').style.display = 'flex';
+        document.getElementById("loading-screen").style.display = "flex";
       }
-
+    
+      // Hide loading screen function
       function hideLoading() {
-        document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById("loading-screen").style.display = "none";
       }
-
-      window.addEventListener('load', hideLoading);
-      window.addEventListener('beforeunload', showLoading);
+    
+      // Prevent default form submission and submit using AJAX
+      document.getElementById("application-form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+    
+        // Show the loading screen when form is submitted
+        showLoading();
+    
+        // Prepare form data
+        const formData = new FormData(this);
+    
+        // Send form data to the server via AJAX
+        fetch(this.action, {
+          method: "POST",
+          body: formData,
+        })
+          .then(response => {
+            if (response.ok) {
+              // Assuming the server responds with a success status
+              alert("Thank you for applying! Your application was submitted successfully.");
+            } else {
+              alert("There was an issue submitting your application. Please try again.");
+            }
+          })
+          .catch(error => {
+            console.error("Error submitting form:", error);
+            alert("Network error. Please check your connection and try again.");
+          })
+          .finally(() => {
+            // Hide the loading screen whether submission succeeded or failed
+            hideLoading();
+          });
+      });
     </script>
+    
+    
 
     <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/apply.js') }}"></script>

@@ -17,19 +17,49 @@
   </head>
   <body>
     <style>
-      .logout-button {
-        background-color: #ff4d4d; /* Red color */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        cursor: pointer;
+      /* HTML: <div class="loader"></div> */
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        animation: l14 4s infinite;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        border: 8px solid;
+        border-radius: 50%;
+        border-color: red red #0000 #0000;
+        mix-blend-mode: darken;
+        animation: l14 1s infinite linear;
+      }
+      .loader::after {
+        border-color: #0000 #0000 blue blue;
+        animation-direction: reverse;
+      }
+      #loading-screen {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent background */
+        z-index: 9999; /* Ensure it appears above all other content */
+        justify-content: center;
+        align-items: center;
       }
 
-      .logout-button:hover {
-        background-color: #cc0000; /* Darker red on hover */
+      @keyframes l14 {
+        100% {
+          transform: rotate(1turn);
+        }
       }
     </style>
     <nav class="navbar">
@@ -54,6 +84,10 @@
         <div></div>
       </div>
     </nav>
+    <!-- Loading screen container -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
 
     <!-- Image Slider Section -->
     <section class="slider">
@@ -224,6 +258,22 @@
     </footer>
 
     <!-- footer end -->
+
+    <script>
+      // Show the loading spinner
+      function showLoading() {
+        document.getElementById("loading-screen").style.display = "flex";
+      }
+
+      // Hide the loading spinner
+      function hideLoading() {
+        document.getElementById("loading-screen").style.display = "none";
+      }
+
+      // Show loading screen on page load and hide it when the page is fully loaded
+      window.addEventListener("load", hideLoading);
+      window.addEventListener("beforeunload", showLoading);
+    </script>
 
     <!-- Link to the external JavaScript in the js folder -->
     <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>

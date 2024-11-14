@@ -38,7 +38,6 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 1rem;
 }
 
 .nav-links a {
