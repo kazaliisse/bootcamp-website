@@ -19,6 +19,55 @@
     />
   </head>
   <body>
+
+    <style>
+      /* HTML: <div class="loader"></div> */
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        animation: l14 4s infinite;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        border: 8px solid;
+        border-radius: 50%;
+        border-color: red red #0000 #0000;
+        mix-blend-mode: darken;
+        animation: l14 1s infinite linear;
+      }
+      .loader::after {
+        border-color: #0000 #0000 blue blue;
+        animation-direction: reverse;
+      }
+      #loading-screen {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent background */
+        z-index: 9999; /* Ensure it appears above all other content */
+        justify-content: center;
+        align-items: center;
+      }
+  
+      @keyframes l14 {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+    </style>
+
+
     <nav class="navbar">
       <div class="navbar-logo">Al Noor Bootcamp</div>
       <div class="nav-links">
@@ -42,6 +91,11 @@
       </div>
     </nav>
 
+    <!-- Loading screen container -->
+   <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
+
     <!-- Header Section -->
     <section class="header">
       <div class="header-content">
@@ -63,7 +117,7 @@
       </div>
       <div class="header-image">
         <img
-          src="{{ url_for('static', filename='images/slide1.jpg') }}"
+          src="{{ url_for('static', filename='images/about-1.jpg') }}"
           alt="Slide 1"
         />
       </div>
@@ -89,7 +143,7 @@
       </div>
       <div class="image-container">
         <img
-          src="{{ url_for('static', filename='images/slide3.jpg') }}"
+          src="{{ url_for('static', filename='images/about-us-2.jpg') }}"
           alt="Slide 3"
         />
       </div>
@@ -214,6 +268,22 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Show the loading spinner
+      function showLoading() {
+        document.getElementById("loading-screen").style.display = "flex";
+      }
+
+      // Hide the loading spinner
+      function hideLoading() {
+        document.getElementById("loading-screen").style.display = "none";
+      }
+
+      // Show loading screen on page load and hide it when the page is fully loaded
+      window.addEventListener("load", hideLoading);
+      window.addEventListener("beforeunload", showLoading);
+    </script>
 
     <!-- AOS JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
