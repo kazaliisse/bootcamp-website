@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #365486; /* Blue */
-  --secondary-color: #0f1035; /* */
+  --primary-color: #606c38; /* Blue */
+  --secondary-color: #283618; /* */
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
@@ -107,7 +107,7 @@ body {
 /* Apply Section Styles */
 /* Apply Section Styles */
 .apply-section {
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #606c38; /* Light background for contrast */
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -120,7 +120,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   font-family: "Arial", sans-serif;
-  color: #333; /* Darker text color */
+  color: white; /* Darker text color */
 }
 
 /* Form Group Styles */
@@ -132,7 +132,7 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555; /* Medium dark color */
+  color: white; /* Medium dark color */
 }
 
 .apply-form-group input,
@@ -152,8 +152,8 @@ body {
 
 /* Submit Button Styles */
 #apply-submit-button {
-  background-color: #007bff; /* Bootstrap primary blue */
-  color: white; /* White text */
+  background-color: #283618;
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -164,7 +164,7 @@ body {
 }
 
 #apply-submit-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #606c38; /* Darker blue on hover */
   transform: translateY(-2px); /* Slight lift effect */
 }
 

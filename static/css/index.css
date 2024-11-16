@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #365486; /* Blue */
-  --secondary-color: #0f1035; /* */
+  --primary-color: #606c38; /* Blue */
+  --secondary-color: #283618; /* */
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
@@ -893,14 +893,14 @@ section.about-us {
 /* Our Courses Section */
 .our-courses {
   padding: 60px 20px;
-  background-color: #f4f4f4;
+  background-color: #606c38;
   text-align: center;
   animation: fadeInSection 1.5s ease-in-out;
 }
 
 .our-courses h1 {
   font-size: 2.5rem;
-  color: #111;
+  color: white;
   margin-bottom: 10px;
   position: relative;
 }
@@ -909,7 +909,7 @@ section.about-us {
   content: "";
   width: 50px;
   height: 4px;
-  background-color: #007bff;
+  background-color: white;
   display: block;
   margin: 0 auto;
   margin-top: 10px;
@@ -917,7 +917,7 @@ section.about-us {
 
 .our-courses .description {
   font-size: 1.2rem;
-  color: #666;
+  color: white;
   margin-bottom: 30px;
   animation: fadeInText 2s ease-in-out;
 }
@@ -930,13 +930,13 @@ section.about-us {
 }
 
 .course-card {
-  background: #fff;
+  background: #283618;
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #111;
+  color: white;
   text-align: center;
   animation: slideInCard 1.5s ease-in-out;
 }
@@ -955,12 +955,12 @@ section.about-us {
 .course-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #111;
+  color: white;
 }
 
 .course-card p {
   font-size: 1rem;
-  color: #666;
+  color: white;
   margin-bottom: 15px;
 }
 
@@ -1048,14 +1048,14 @@ section.about-us {
 /* Technical Mentors Section */
 .technical-mentors {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  background-color: #606c38;
   text-align: center;
   animation: fadeInMentors 1.5s ease-in-out;
 }
 
 .technical-mentors h4 {
   font-size: 2rem;
-  color: #111;
+  color: white;
   margin-bottom: 10px;
   position: relative;
 }
@@ -1064,7 +1064,7 @@ section.about-us {
   content: "";
   width: 40px;
   height: 3px;
-  background-color: #ff5722;
+  background-color: white;
   display: block;
   margin: 0 auto;
   margin-top: 8px;
@@ -1072,7 +1072,7 @@ section.about-us {
 
 .technical-mentors .description {
   font-size: 1.1rem;
-  color: #666;
+  color: white;
   margin-bottom: 30px;
   animation: fadeInDescription 2s ease-in-out;
 }
@@ -1085,7 +1085,7 @@ section.about-us {
 }
 
 .mentor-card {
-  background: #fff;
+  background: #283618;
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -1110,12 +1110,12 @@ section.about-us {
 .mentor-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: #111;
+  color: white;
 }
 
 .mentor-card p {
   font-size: 1rem;
-  color: #666;
+  color: white;
   margin-bottom: 10px;
 }
 
@@ -1203,7 +1203,7 @@ section.about-us {
 /* contact styling */
 .contact-us-section {
   padding: 40px;
-  background-color: #f9f9f9;
+  background-color: #606c38;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -1212,6 +1212,7 @@ section.about-us {
 .contact-us-section h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color: white;
 }
 
 .form-group {
@@ -1223,6 +1224,7 @@ section.about-us {
   margin-bottom: 5px;
   font-size: 1rem;
   color: #333;
+  color: white;
 }
 
 .form-group input,
@@ -1236,7 +1238,7 @@ section.about-us {
 
 #contact-submit {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #283618;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -1246,13 +1248,13 @@ section.about-us {
 }
 
 #contact-submit:hover {
-  background-color: #218838;
+  background-color: #606c38;
 }
 
 /* Popup for success message */
 .popup {
   display: none;
-  background-color: #28a745;
+  background-color: #283618;
   color: white;
   padding: 20px;
   position: fixed;
