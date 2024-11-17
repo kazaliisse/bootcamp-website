@@ -23,7 +23,7 @@ try:
                         reason TEXT NOT NULL
                     )''')
 
-    # Create an applications table
+    # Create an applications table with a status column
     cursor.execute('''CREATE TABLE IF NOT EXISTS applications (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         first_name TEXT NOT NULL,
@@ -32,7 +32,8 @@ try:
                         phone TEXT NOT NULL,
                         gender TEXT NOT NULL,
                         county TEXT NOT NULL,
-                        course TEXT NOT NULL
+                        course TEXT NOT NULL,
+                        status TEXT DEFAULT 'Pending' -- Status column added
                     )''')
 
     # Create a reset_tokens table

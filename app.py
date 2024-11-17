@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from auth import auth  # Importing the auth blueprint
-
+import smtplib  # Add this line for sending emails
 from flask_mail import Mail, Message  # Importing Flask-Mail
 import sqlite3
+from email.mime.text import MIMEText  # For plain text email body
+from email.mime.multipart import MIMEMultipart  # For complex email messages
 
 app = Flask(__name__)
 
@@ -160,41 +162,115 @@ def view_applications():
 
     return render_template('applications.html', applications=applications, page=page, per_page=per_page, total=total, search=search)
 
-# Route to edit an application
-@app.route('/admin/edit_application/<int:id>', methods=['GET', 'POST'])
-def edit_application(id):
-    conn = get_db_connection()
-    application = conn.execute('SELECT * FROM applications WHERE id = ?', (id,)).fetchone()
+# Function to send an email
+def send_email(to_email, subject, body):
+    try:
+        sender_email = "noorhafowbare@gmail.com"  # Replace with your email
+        sender_password = "qjmnwlgthsskjbwy"  # Replace with your email password
+        
+        # Setting up the email server
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
 
-    if request.method == 'POST':
-        first_name = request.form['first-name']
-        last_name = request.form['last-name']
-        email = request.form['email']
-        phone = request.form['phone']
-        gender = request.form['gender']
-        county = request.form['county']
-        course = request.form['course']
+        # Email message
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = to_email
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
 
-        conn.execute('UPDATE applications SET first_name = ?, last_name = ?, email = ?, phone = ?, gender = ?, county = ?, course = ? WHERE id = ?',
-                     (first_name, last_name, email, phone, gender, county, course, id))
-        conn.commit()
+        # Sending email
+        server.sendmail(sender_email, to_email, msg.as_string())
+        server.quit()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
+# Function to fetch an application by ID
+def query_database_by_id(application_id):
+    """
+    Fetch an application record by its ID from the database.
+
+    Parameters:
+        application_id (int): The ID of the application to retrieve.
+
+    Returns:
+        dict: A dictionary containing the application data, or None if not found.
+    """
+    try:
+        conn = sqlite3.connect('database.db')  # Connect to your database
+        conn.row_factory = sqlite3.Row  # Fetch rows as dictionaries
+        cursor = conn.cursor()
+        
+        # Query to fetch application by ID
+        cursor.execute("SELECT * FROM applications WHERE id = ?", (application_id,))
+        row = cursor.fetchone()
         conn.close()
 
-        flash('Application updated successfully!', 'success')
-        return redirect(url_for('view_applications'))
+        return dict(row) if row else None
+    except Exception as e:
+        print(f"Error fetching application by ID: {e}")
+        return None
 
-    conn.close()
-    return render_template('edit_application.html', application=application)
+# Function to update the application status
+def update_application_status(application_id, status):
+    try:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("UPDATE applications SET status = ? WHERE id = ?", (status, application_id))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"Error updating application status: {e}")
 
-# Route to delete an application
-@app.route('/admin/delete_application/<int:id>', methods=['POST'])
-def delete_application(id):
-    conn = get_db_connection()
-    conn.execute('DELETE FROM applications WHERE id = ?', (id,))
-    conn.commit()
-    conn.close()
+# Admin page route
+@app.route('/admin')
+def admin_page():
+    try:
+        conn = sqlite3.connect('database.db')
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM applications")
+        applications = cursor.fetchall()
+        conn.close()
+        return render_template('admin.html', applications=applications)
+    except Exception as e:
+        flash(f"Error loading admin page: {e}", "danger")
+        return redirect(url_for('home'))
 
-    flash('Application deleted successfully!', 'success')
+# Accept application route
+@app.route('/accept_application/<int:application_id>', methods=['POST'])
+def accept_application(application_id):
+    application = query_database_by_id(application_id)
+    if application:
+        send_email(
+            application['email'], 
+            "Admission Accepted", 
+            f"Dear {application['first_name']} {application['last_name']},\n\nCongratulations! You have been accepted for admission."
+
+        )
+        update_application_status(application_id, "Accepted")
+        flash("Application Accepted and Email Sent!", "success")
+    else:
+        flash("Application not found.", "danger")
+    return redirect(url_for('view_applications'))
+
+# Decline application route
+@app.route('/decline_application/<int:application_id>', methods=['POST'])
+def decline_application(application_id):
+    application = query_database_by_id(application_id)
+    if application:
+        send_email(
+            application['email'], 
+            "Admission Declined", 
+            f"Dear {application['first_name']} {application['last_name']},\n\nWe regret to inform you that your application was not accepted."
+
+        )
+        update_application_status(application_id, "Declined")
+        flash("Application Declined and Email Sent!", "success")
+    else:
+        flash("Application not found.", "danger")
     return redirect(url_for('view_applications'))
 
 # Root route to redirect to home
