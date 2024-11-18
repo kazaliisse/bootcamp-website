@@ -72,11 +72,11 @@ def init_db():
 def send_confirmation_email(email, first_name, course):
     try:
         msg = Message(
-            'Congratulations on Your Admission!',
+            'Application Received!',
             sender='noorhafowbare@gmail.com',  
             recipients=[email]
         )
-        msg.body = f"Hello {first_name},\n\nCongratulations! Your admission application for the {course} course has been received successfully. We are excited to have you join us.\n\nBest regards,\nThe Team"
+        msg.body = f"Hello {first_name},\n\nThank you for applying for the {course} at Al Noor Bootcamp. We have successfully received your application, and our team is currently reviewing it. We will notify you of the outcome within 24Hrs. Please feel free to contact us if you have any questions in the meantime. Thank you for choosing Al Noor Bootcamp to advance your skills.\n\nBest regards,\nThe Al Noor Bootcamp Team"
         mail.send(msg)
         print("Confirmation email sent successfully!")
     except Exception as e:
@@ -245,11 +245,19 @@ def accept_application(application_id):
     application = query_database_by_id(application_id)
     if application:
         send_email(
-            application['email'], 
-            "Admission Accepted", 
-            f"Dear {application['first_name']} {application['last_name']},\n\nCongratulations! You have been accepted for admission."
+    application['email'], 
+    "Congratulations – You’ve Been Accepted!", 
+    f"""Dear {application['first_name']} {application['last_name']}, 
 
-        )
+Congratulations! After reviewing your application, we are thrilled to inform you that you have been accepted into the {application['course']} at Al Noor Bootcamp. This is the first step towards an exciting learning journey, and we are honored to have you join our program. To finalize your enrollment, please complete the following steps:
+
+1. Please proceed with your admission fee payment through the following account:
+   - Account Number: 212121
+   - Business Number: 888888
+If you need any assistance or have questions, feel free to reach out to us at noorhafowbare@gmail.com.
+
+We look forward to welcoming you to Al Noor Bootcamp!"""
+)
         update_application_status(application_id, "Accepted")
         flash("Application Accepted and Email Sent!", "success")
     else:
@@ -263,8 +271,8 @@ def decline_application(application_id):
     if application:
         send_email(
             application['email'], 
-            "Admission Declined", 
-            f"Dear {application['first_name']} {application['last_name']},\n\nWe regret to inform you that your application was not accepted."
+            "Update on Your Application", 
+            f"Dear {application['first_name']} {application['last_name']},\n\nWe regret to inform you that your application was not accepted. "
 
         )
         update_application_status(application_id, "Declined")
