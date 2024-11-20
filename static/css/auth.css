@@ -50,3 +50,58 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+  margin-right: 3rem;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+  min-width: 200px;
+  display: none; /* Hidden by default */
+}
+
+.profile-dropdown p {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.profile-dropdown a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007bff;
+  padding: 5px;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none; /* Class to hide elements */
+}
+
+.profile-dropdown:not(.hidden) {
+  display: block; /* Show when the 'hidden' class is not present */
+}

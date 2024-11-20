@@ -58,8 +58,9 @@ def login():
 
 @auth.route('/logout')
 def logout():
-    session.pop('user_id', None)  # Clear the session
-    return redirect(url_for('auth.login'))  # Redirect to login page
+    session.pop('user_id', None)  # Clear session
+    return redirect(url_for('auth.login'))  # Redirect to the login page
+
 
 # Route for sign-up
 @auth.route('/signup', methods=['POST'])
@@ -91,6 +92,23 @@ def status():
     if 'user_id' in session:
         return jsonify({"success": True, "message": "Logged in"})
     return jsonify({"success": False, "message": "Not logged in"})
+    
+@auth.route('/profile', methods=['GET'])
+def profile():
+    if 'user_id' not in session:
+        return jsonify({"success": False, "message": "User not logged in"}), 401
+
+    user_id = session['user_id']
+
+    # Fetch user information from the database
+    conn = get_db_connection()
+    user = conn.execute('SELECT name, email FROM users WHERE id = ?', (user_id,)).fetchone()
+    conn.close()
+
+    if not user:
+        return jsonify({"success": False, "message": "User not found"}), 404
+
+    return jsonify({"success": True, "name": user['name'], "email": user['email']})
 
 
 # Register the blueprint for auth routes

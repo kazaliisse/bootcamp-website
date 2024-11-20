@@ -46,10 +46,22 @@
         <a href="{{ url_for('apply') }}">Apply</a>
         <a href="{{ url_for('auth') }}">login</a>
         {% if 'user_id' in session %}
-        <a href="{{ url_for('auth.logout') }}">Logout</a>
-    {% else %}
-        <a href="{{ url_for('auth.login') }}"></a>
-    {% endif %}
+  <div class="profile-menu">
+    <img
+      src="{{ url_for('static', filename='images/profile-icon.png') }}"
+      alt="Profile"
+      class="profile-icon"
+      onclick="toggleProfileMenu()"
+    />
+    <div id="profileDropdown" class="profile-dropdown hidden">
+      <p id="userName">Name: Loading...</p>
+      <p id="userEmail">Email: Loading...</p>
+      <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
+    </div>
+  </div>
+{% endif %}
+
+
       </div>
       <div class="toggle-menu" onclick="toggleMenu()">
         <div></div>

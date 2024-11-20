@@ -175,3 +175,37 @@ async function validateReset() {
     alert("An error occurred. Please try again later.");
   }
 }
+
+let isProfileFetched = false; // Flag to ensure the profile is fetched only once
+
+function toggleProfileMenu() {
+  const dropdown = document.getElementById("profileDropdown");
+  const isVisible = !dropdown.classList.contains("hidden");
+
+  // Toggle the dropdown visibility
+  dropdown.classList.toggle("hidden");
+
+  // Only fetch user profile data when the dropdown is shown and data hasn't been fetched yet
+  if (!isVisible && !isProfileFetched) {
+    fetchUserProfile();
+    isProfileFetched = true; // Mark profile data as fetched
+  }
+}
+
+function fetchUserProfile() {
+  fetch("/auth/profile")
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        document.getElementById("userName").textContent = `Name: ${data.name}`;
+        document.getElementById(
+          "userEmail"
+        ).textContent = `Email: ${data.email}`;
+      } else {
+        console.error(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user profile:", error);
+    });
+}
