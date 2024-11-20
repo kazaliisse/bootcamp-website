@@ -39,6 +39,8 @@
             <th>Gender</th>
             <th>County</th>
             <th>Course</th>
+            <th>Resume</th>
+            <!-- Added Resume column -->
             <th>Actions</th>
           </tr>
         </thead>
@@ -53,6 +55,19 @@
             <td>{{ application.gender }}</td>
             <td>{{ application.county }}</td>
             <td>{{ application.course }}</td>
+
+            <!-- Resume Column -->
+            <td>
+              {% if application.resume_path %}
+              <a
+                href="{{ url_for('download_file', filename=application.resume_path.split('/')[-1]) }}"
+                target="_blank"
+                >Download Resume</a
+              >
+
+              > {% else %} No resume uploaded {% endif %}
+            </td>
+
             <td>
               <!-- Actions Container -->
               <div class="actions-container">

@@ -33,6 +33,7 @@ try:
                         gender TEXT NOT NULL,
                         county TEXT NOT NULL,
                         course TEXT NOT NULL,
+                         resume_path TEXT
                         status TEXT DEFAULT 'Pending' -- Status column added
                     )''')
 

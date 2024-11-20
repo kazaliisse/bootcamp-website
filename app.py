@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, send_from_directory
 from auth import auth  # Importing the auth blueprint
 import smtplib  # Add this line for sending emails
 from flask_mail import Mail, Message  # Importing Flask-Mail
 import sqlite3
 from email.mime.text import MIMEText  # For plain text email body
 from email.mime.multipart import MIMEMultipart  # For complex email messages
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -26,6 +28,7 @@ app.config['MAIL_PASSWORD'] = 'qjmnwlgthsskjbwy'
 
 # Initialize Mail
 mail = Mail(app)
+
 
 
 # Function to connect to the SQLite database
@@ -67,6 +70,7 @@ def init_db():
 
     conn.commit()
     conn.close()
+    
 
     # Function to send confirmation email
 def send_confirmation_email(email, first_name, course):
@@ -145,7 +149,7 @@ def delete_contact(id):
 def view_applications():
     search = request.args.get('search', '')  # Search functionality
     page = request.args.get('page', 1, type=int)
-    per_page = 10  # Number of records per page
+    per_page = 80  # Number of records per page
     offset = (page - 1) * per_page
 
     conn = get_db_connection()
@@ -345,7 +349,15 @@ def contact():
     # For GET request, render the contact form
     return render_template('contact.html')
 
+# Ensure your UPLOAD_FOLDER and ALLOWED_EXTENSIONS are defined correctly
+UPLOAD_FOLDER = 'uploads/'  # Folder where files will be saved
+ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB limit
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Apply page route with POST method to handle form submission
 @app.route('/apply', methods=['GET', 'POST'])
@@ -354,10 +366,9 @@ def apply():
     if 'user_id' not in session:  # Check if user is logged in
         flash('You must be logged in to apply.', 'warning')
         return redirect(url_for('auth.login'))  # Redirect to login page if not logged in
+
     if request.method == 'POST':
-        
         try:
-            
             if request.is_json:
                 data = request.get_json()
                 first_name = data['firstName']
@@ -376,25 +387,47 @@ def apply():
                 county = request.form['county']
                 course = request.form['course']
 
+            # Handle file upload
+            file = request.files.get('resume')  # Ensure you're getting the file from the form
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+                print(f"File saved at: {file_path}")  # Debugging line
+            else:
+                file_path = None  # If no file was uploaded or file is not allowed
+                print("No valid file path")
+
             # Connect to the database and save the application data
             conn = get_db_connection()
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO applications (first_name, last_name, email, phone, gender, county, course) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                           (first_name, last_name, email, phone, gender, county, course))
+            cursor.execute("""
+                    INSERT INTO applications (first_name, last_name, email, phone, gender, county, course, resume_path)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """, (first_name, last_name, email, phone, gender, county, course, file_path))
             conn.commit()
             conn.close()
 
-              # Send confirmation email
+            # Send confirmation email
             send_confirmation_email(email, first_name, course)
 
             flash('Application form submitted successfully! A confirmation email has been sent.', 'success')
-            return {"message": "Application submitted successfully!"}, 200
+            # return {"message": "Application submitted successfully!"}, 200
 
         except Exception as e:
             flash(f'Error: {e}', 'danger')
             return {"message": str(e)}, 500
 
     return render_template('apply.html')
+
+@app.route('/uploads/<filename>')
+def download_file(filename):
+    # Ensure the file exists and is in the UPLOAD_FOLDER
+    try:
+        return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    except Exception as e:
+        flash(f"Error: {e}", 'danger')
+        return redirect(url_for('home'))  # Or any other appropriate redirect
 #auth
 @app.route('/auth')
 def auth():

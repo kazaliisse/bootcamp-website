@@ -2,33 +2,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("application-form");
   const successMessage = document.getElementById("application-success-message");
   const loadingMessage = document.getElementById("application-loading-message");
+  const clearBtn = document.getElementById("clear-resume-btn");
+  const resumeInput = document.getElementById("resume-apply");
 
+  // Handle file input change and show/hide "Clear File" button
+  resumeInput.addEventListener("change", function () {
+    if (this.files.length > 0) {
+      clearBtn.style.display = "inline-block";
+    } else {
+      clearBtn.style.display = "none";
+    }
+  });
+
+  // Clear file input
+  function clearFileInput() {
+    resumeInput.value = ""; // Clears the selected file
+    clearBtn.style.display = "none"; // Hide the 'Clear File' button
+  }
+
+  // Handle form submission
   form.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission
 
     // Show loading message
     loadingMessage.style.display = "block";
 
-    // Gather form data
+    // Gather form data (including file)
     const formData = new FormData(form);
-    const data = {
-      firstName: formData.get("first-name"),
-      lastName: formData.get("last-name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      gender: formData.get("gender"),
-      county: formData.get("county"),
-      course: formData.get("course"),
-    };
 
     try {
       // Send the data to the server
       const response = await fetch("/apply", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData, // Send FormData including file as a multipart request
       });
 
       // Hide loading message
@@ -43,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           successMessage.style.display = "none";
         }, 3000);
+
+        // Clear the file input and reset button visibility
+        clearFileInput();
       } else {
         console.error("Error submitting application:", response.statusText);
       }
@@ -51,4 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loadingMessage.style.display = "none"; // Hide loading message in case of error
     }
   });
+
+  // Attach the clear button action
+  clearBtn.addEventListener("click", clearFileInput);
 });
