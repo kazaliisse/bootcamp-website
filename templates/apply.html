@@ -150,17 +150,13 @@
         </div>
         <div class="form-group apply-form-group">
           <label for="course">Preferred Course</label>
-          <select id="course-apply" name="course" required>
-            <option value="">Select Course</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Data Science">Data Science</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-            <option value="Mobile App Development">
-              Mobile App Development
-            </option>
-            <option value="Digital Marketing">Digital Marketing</option>
-            <option value="E-Commerce">E-Commerce</option>
-          </select>
+<select id="course-apply" name="course" required>
+  <option value="">Select Course</option>
+  {% for course in courses %}
+    <option value="{{ course }}">{{ course }}</option>
+  {% endfor %}
+</select>
+
           <div class="form-group apply-form-group">
             <label for="resume">Upload Resume</label>
             <input

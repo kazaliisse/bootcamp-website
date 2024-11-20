@@ -285,6 +285,27 @@ def decline_application(application_id):
         flash("Application not found.", "danger")
     return redirect(url_for('view_applications'))
 
+@app.route('/delete_application/<int:id>', methods=['POST'])
+def delete_application(id):
+    try:
+        # Connect to the database
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Delete the application from the database
+        cursor.execute("DELETE FROM applications WHERE id = ?", (id,))
+        conn.commit()
+
+        # Close the database connection
+        conn.close()
+
+        flash('Application deleted successfully!', 'success')
+    except Exception as e:
+        flash(f'Error deleting application: {e}', 'danger')
+
+    return redirect(url_for('view_applications'))
+
+
 # Root route to redirect to home
 @app.route('/')
 def root():
@@ -367,6 +388,16 @@ def apply():
         flash('You must be logged in to apply.', 'warning')
         return redirect(url_for('auth.login'))  # Redirect to login page if not logged in
 
+    # Define the list of courses
+    courses = [
+        "Web Development",
+        "Data Science",
+        "Cybersecurity",
+        "Mobile App Development",
+        "Digital Marketing",
+        "E-Commerce"
+    ]
+
     if request.method == 'POST':
         try:
             if request.is_json:
@@ -418,7 +449,9 @@ def apply():
             flash(f'Error: {e}', 'danger')
             return {"message": str(e)}, 500
 
-    return render_template('apply.html')
+    # Pass the courses list to the template
+    return render_template('apply.html', courses=courses)
+
 
 @app.route('/uploads/<filename>')
 def download_file(filename):

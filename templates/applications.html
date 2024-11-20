@@ -40,8 +40,8 @@
             <th>County</th>
             <th>Course</th>
             <th>Resume</th>
-            <!-- Added Resume column -->
             <th>Actions</th>
+            <!-- Added Actions column -->
           </tr>
         </thead>
         <tbody>
@@ -64,8 +64,7 @@
                 target="_blank"
                 >Download Resume</a
               >
-
-              > {% else %} No resume uploaded {% endif %}
+              {% else %} No resume uploaded {% endif %}
             </td>
 
             <td>
@@ -85,6 +84,15 @@
                   style="display: inline"
                 >
                   <button type="submit" class="btn btn-danger">Decline</button>
+                </form>
+
+                <!-- Delete Form -->
+                <form
+                  action="/delete_application/{{ application.id }}"
+                  method="POST"
+                  style="display: inline"
+                >
+                  <button type="submit" class="btn btn-delete">Delete</button>
                 </form>
               </div>
             </td>
