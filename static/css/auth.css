@@ -105,3 +105,184 @@ a:hover {
 .profile-dropdown:not(.hidden) {
   display: block; /* Show when the 'hidden' class is not present */
 }
+
+/* profile styling */
+
+/* Profile Menu Container */
+.profile-menu {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Profile Icon */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-icon:hover {
+  border-color: #007bff; /* Highlight color */
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Profile Dropdown Menu */
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #41f10b;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 200px;
+  z-index: 100;
+  display: none; /* Hidden by default */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.profile-dropdown.hidden {
+  display: none;
+}
+
+.profile-dropdown p {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown p:last-child {
+  border-bottom: none;
+}
+
+.logout-button {
+  display: block;
+  margin-top: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(247, 4, 37);
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: orangered;
+}
+
+/* Animation for Dropdown */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    min-width: 150px;
+    padding: 12px;
+  }
+
+  .logout-button {
+    font-size: 12px;
+  }
+}
+
+/* Login Button Styling */
+.login-button {
+  display: inline-flex; /* Align icon and text horizontally */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
+  color: #fff;
+  background-color: #007bff; /* Primary color */
+  padding: 10px 16px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Font size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+  border: none; /* Remove border */
+}
+
+/* Hover and Focus States */
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Icon Size */
+.login-button i,
+.login-button svg {
+  font-size: 18px; /* Adjust icon size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-button {
+    font-size: 12px;
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+  }
+
+  .login-button i,
+  .login-button svg {
+    font-size: 16px; /* Adjust icon size for smaller screens */
+  }
+}
+/* login style */
+/* Login Button Styling */
+.login-button {
+  display: inline-flex; /* Align icon and text horizontally */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
+  color: #fff;
+  background-color: #007bff; /* Primary color */
+  padding: 10px 16px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Font size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+  border: none; /* Remove border */
+}
+
+/* Hover and Focus States */
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Icon Size */
+.login-button i,
+.login-button svg {
+  font-size: 18px; /* Adjust icon size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-button {
+    font-size: 12px;
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+  }
+
+  .login-button i,
+  .login-button svg {
+    font-size: 16px; /* Adjust icon size for smaller screens */
+  }
+}

@@ -6,19 +6,6 @@ body {
   padding: 20px;
 }
 
-header {
-  background-color: #343a40;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: bold;
-}
-
 /* Container for admin pages */
 .container {
   max-width: 1200px;
@@ -95,7 +82,18 @@ button.delete:hover {
   justify-content: flex-start; /* Align buttons to the left */
   align-items: center; /* Vertically center the buttons */
 }
+header {
+  background-color: #343a40;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
 
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
 /* Form Styling */
 form {
   margin-top: 20px;
