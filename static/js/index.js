@@ -77,3 +77,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+window.onload = function () {
+  const counters = [
+    { elementId: "counter1", maxCount: 1000, speed: 5 },
+    { elementId: "counter2", maxCount: 500, speed: 10 },
+    { elementId: "counter3", maxCount: 300, speed: 15 },
+  ];
+
+  counters.forEach((counter) => {
+    let count = 0;
+    let counterElement = document.getElementById(counter.elementId);
+
+    function updateCounter() {
+      if (count <= counter.maxCount) {
+        counterElement.textContent = count;
+        count++;
+      }
+    }
+
+    setInterval(updateCounter, counter.speed);
+  });
+};
+
+// let currentIndex = 0;
+// const slider = document.querySelector(".slider");
+// const slides = document.querySelectorAll(".slider img");
+// const totalSlides = slides.length;
+
+// // Show next slide
+// function nextSlide() {
+//   currentIndex = (currentIndex + 1) % totalSlides;
+//   updateSliderPosition();
+// }
+
+// // Show previous slide
+// function prevSlide() {
+//   currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+//   updateSliderPosition();
+// }
+
+// // Update slider position
+// function updateSliderPosition() {
+//   slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+// }
+
+// // Auto-slide every 3 seconds
+// setInterval(nextSlide, 3000);

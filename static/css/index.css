@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #606c38; /* Blue */
-  --secondary-color: #283618; /* */
+  --primary-color: #edede9; /* Blue */
+  --secondary-color: #d6ccc2; /* */
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
@@ -22,7 +22,7 @@ body {
   align-items: center;
   padding: 1rem;
   background-color: var(--primary-color);
-  color: white;
+  color: black;
   position: fixed; /* Fixed at the top of the page */
   top: 0;
   left: 0;
@@ -41,7 +41,7 @@ body {
 }
 
 .nav-links a {
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 0.5rem 2rem;
   border-radius: 5px;
@@ -59,12 +59,13 @@ body {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  color: black;
 }
 
 .toggle-menu div {
   width: 25px;
   height: 3px;
-  background-color: white;
+  background-color: black;
   margin: 4px;
 }
 
@@ -180,7 +181,7 @@ body {
   padding: 10px 20px;
   background-color: var(--secondary-color);
   border: none;
-  color: white;
+  color: black;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -229,7 +230,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex-basis: 45%;
-  animation: slideInCard 1.5s ease-in-out; /* Added animation */
+  animation: slideInCard 1.5s ease-in-out;
 }
 
 @keyframes slideInCard {
@@ -246,20 +247,20 @@ body {
 .card h2 {
   font-size: 2rem;
   margin-bottom: 15px;
-  color: white;
+  color: black;
 }
 
 .card p {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: white;
+  color: black;
 }
 
 .outline-btn {
   padding: 10px 20px;
-  border: 2px solid white;
+  border: 2px solid black;
   background-color: transparent;
-  color: white;
+  color: black;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -267,8 +268,8 @@ body {
 }
 
 .outline-btn:hover {
-  background-color: var();
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: black;
 }
 
 /* Responsive for smaller screens */
@@ -289,8 +290,8 @@ body {
 
 /* footer start */
 .footer {
-  background-color: var(--secondary-color); /* Dark Blue background */
-  color: white;
+  background-color: var(--secondary-color);
+  color: black;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
   animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
@@ -340,15 +341,17 @@ body {
 }
 
 .footer-column ul li a {
-  color: white;
+  color: black;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-column ul li a:hover {
-  color: var(--primary-color); /* Secondary color */
+  color: var(--secondary-color);
 }
-
+.footer-column {
+  border-right: solid 3px black;
+}
 .newsletter input[type="email"] {
   padding: 0.5rem;
   border: none;
@@ -361,13 +364,15 @@ body {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color); /* Button color */
-  color: white;
+  background-color: var(--primary-color);
+  color: black;
   cursor: pointer;
+  width: 40%;
 }
 
 .newsletter button:hover {
   opacity: 0.8;
+  background-color: rgba(174, 166, 177, 0);
 }
 
 .social-icons {
@@ -375,7 +380,7 @@ body {
 }
 
 .social-icons a {
-  color: white;
+  color: black;
   font-size: 1.5rem;
   margin-right: 15px;
   transition: color 0.3s ease;
@@ -408,7 +413,7 @@ body {
 .why-choose-us h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: white;
+  color: black;
   position: relative;
   display: inline-block;
   animation: zoomInTitle 1.5s ease-in-out; /* Added animation */
@@ -436,7 +441,7 @@ body {
 
 .why-choose-us p {
   margin-bottom: 40px;
-  color: white;
+  color: black;
   font-size: 1.1rem;
   animation: fadeInText 1.5s ease-in-out; /* Reusing fadeInText animation */
 }
@@ -456,8 +461,11 @@ body {
   padding: 20px;
   width: 30%; /* This sets each card to 30% of the parent container */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+  color: black;
   animation: slideInFeature 1.5s ease-in-out; /* Added animation */
+}
+.feature h3 {
+  color: black;
 }
 
 @keyframes slideInFeature {
@@ -497,6 +505,43 @@ body {
     margin-bottom: 20px;
   }
 }
+.counting-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: var(--primary-color);
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.counter {
+  font-size: 60px;
+  font-weight: bold;
+  color: #a30000; /* Red color */
+  margin-bottom: 10px;
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s ease-in-out;
+}
+
+.counter:hover {
+  transform: scale(1.1);
+}
+
+h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  font-family: "Arial", sans-serif;
+}
 
 /* about us styling */
 
@@ -531,15 +576,13 @@ body {
     opacity: 1;
   }
 }
-
-/* Header Section */
 /* Header Section */
 section.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 60px 100px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
   animation: fadeIn 1s ease-in-out;
 }
@@ -548,22 +591,20 @@ section.header {
   max-width: 50%;
   animation: slideInLeft 1.5s ease-out;
 }
-
 .header h1 {
   font-size: 40px;
   margin-bottom: 20px;
+  color: black;
 }
-
 .header p {
   font-size: 16px;
   margin-bottom: 20px;
   line-height: 1.6;
+  color: #000;
 }
-
 .buttons {
   margin-top: 20px;
 }
-
 .btn {
   padding: 12px 24px;
   text-decoration: none;
@@ -575,12 +616,12 @@ section.header {
 
 .btn-primary {
   background-color: #00c4ff;
-  color: white;
+  color: black;
 }
 
 .btn-secondary {
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--primary-color);
+  color: black;
 }
 
 /* Button Hover Animation */
@@ -667,7 +708,7 @@ section.about-us {
   justify-content: space-between;
   align-items: center;
   padding: 60px 100px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   animation: fadeIn 1s ease-in-out;
 }
 .about-us .content {
@@ -676,12 +717,12 @@ section.about-us {
 }
 .about-us h2 {
   font-size: 36px;
-  color: white;
+  color: black;
   margin-bottom: 20px;
 }
 .about-us p {
   font-size: 16px;
-  color: white;
+  color: black;
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -696,7 +737,7 @@ section.about-us {
 /* Styling for the "What We Offer" Section */
 .what-we-offer {
   padding: 60px 20px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   text-align: center;
   animation: fadeInSection 1.5s ease-in-out;
 }
@@ -704,14 +745,14 @@ section.about-us {
 .offer-section-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: white;
+  color: black;
   animation: fadeInText 1.5s ease-in-out;
 }
 
 .offer-section-description {
   font-size: 1.1rem;
   margin-bottom: 30px;
-  color: white;
+  color: black;
   animation: fadeInText 2s ease-in-out;
 }
 
@@ -723,13 +764,13 @@ section.about-us {
 }
 
 .offer-feature-card {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+  color: black;
   text-align: left;
   animation: slideInCard 1.5s ease-in-out;
 }
@@ -748,12 +789,12 @@ section.about-us {
 .offer-feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: white;
+  color: black;
 }
 
 .offer-feature-card p {
   font-size: 1rem;
-  color: white;
+  color: black;
   margin-bottom: 15px;
 }
 
@@ -797,6 +838,75 @@ section.about-us {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.video-banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: left;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.tagline {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.05);
 }
 
 /* Responsive Styles for both "About Us" and "What We Offer" */
@@ -893,15 +1003,15 @@ section.about-us {
 /* Our Courses Section */
 .our-courses {
   padding: 60px 20px;
-  background-color: #606c38;
+  background-color: var(--primary-color);
   text-align: center;
   animation: fadeInSection 1.5s ease-in-out;
 }
 
 .our-courses h1 {
   font-size: 2.5rem;
-  color: white;
-  margin-bottom: 10px;
+  color: black;
+  margin-top: 40px;
   position: relative;
 }
 
@@ -909,7 +1019,7 @@ section.about-us {
   content: "";
   width: 50px;
   height: 4px;
-  background-color: white;
+  background-color: black;
   display: block;
   margin: 0 auto;
   margin-top: 10px;
@@ -917,7 +1027,7 @@ section.about-us {
 
 .our-courses .description {
   font-size: 1.2rem;
-  color: white;
+  color: black;
   margin-bottom: 30px;
   animation: fadeInText 2s ease-in-out;
 }
@@ -930,13 +1040,13 @@ section.about-us {
 }
 
 .course-card {
-  background: #283618;
+  background: var(--secondary-color);
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+  color: black;
   text-align: center;
   animation: slideInCard 1.5s ease-in-out;
 }
@@ -955,12 +1065,12 @@ section.about-us {
 .course-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: white;
+  color: black;
 }
 
 .course-card p {
   font-size: 1rem;
-  color: white;
+  color: black;
   margin-bottom: 15px;
 }
 
@@ -1048,14 +1158,14 @@ section.about-us {
 /* Technical Mentors Section */
 .technical-mentors {
   padding: 60px 20px;
-  background-color: #606c38;
+  background-color: var(--primary-color);
   text-align: center;
   animation: fadeInMentors 1.5s ease-in-out;
 }
 
 .technical-mentors h4 {
   font-size: 2rem;
-  color: white;
+  color: black;
   margin-bottom: 10px;
   position: relative;
 }
@@ -1064,7 +1174,7 @@ section.about-us {
   content: "";
   width: 40px;
   height: 3px;
-  background-color: white;
+  background-color: black;
   display: block;
   margin: 0 auto;
   margin-top: 8px;
@@ -1072,7 +1182,7 @@ section.about-us {
 
 .technical-mentors .description {
   font-size: 1.1rem;
-  color: white;
+  color: black;
   margin-bottom: 30px;
   animation: fadeInDescription 2s ease-in-out;
 }
@@ -1085,7 +1195,7 @@ section.about-us {
 }
 
 .mentor-card {
-  background: #283618;
+  background: var(--secondary-color);
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -1110,12 +1220,12 @@ section.about-us {
 .mentor-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: white;
+  color: black;
 }
 
 .mentor-card p {
   font-size: 1rem;
-  color: white;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -1299,5 +1409,140 @@ section.about-us {
   .form-group input,
   .form-group select {
     font-size: 0.9rem;
+  }
+}
+
+#fao-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--primary-color);
+}
+
+.fao-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.fao-image-section {
+  position: relative;
+}
+
+.fao-image-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fao-text-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
+  padding: 20px;
+  color: #fff;
+  animation: slideUp 1s ease-out;
+  text-align: center;
+}
+
+.fao-text-section h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00c4ff;
+  margin: 0;
+}
+
+.fao-text-section h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.fao-text-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Smooth animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .fao-text-section h1 {
+    font-size: 1.5rem;
+  }
+  .fao-text-section p {
+    font-size: 0.9rem;
+  }
+}
+
+#ocop-section {
+  padding: 20px;
+  background-color: var(--primary-color);
+}
+
+.ocop-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--primary-color); /* Card background */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ocop-image img {
+  width: 100%;
+  height: 40rem;
+  object-fit: cover;
+  max-width: 600px;
+}
+
+.ocop-text {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  color: black;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.ocop-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.ocop-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ocop-container {
+    flex-direction: column; /* Stack image and text vertically */
+  }
+
+  .ocop-text {
+    border-radius: 0; /* Remove rounded corners for stacked layout */
   }
 }
