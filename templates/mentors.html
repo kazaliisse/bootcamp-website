@@ -87,6 +87,20 @@
             onclick="toggleProfileMenu()"
           />
           <div id="profileDropdown" class="profile-dropdown hidden">
+            <div class="upload-container">
+              <h2>Upload Profile Image</h2>
+              <div class="image-preview" id="imagePreview">
+                  <img src="" alt="Profile Image" id="profileImage" class="hidden">
+              </div>
+              <label for="imageInput" class="custom-file-label">Choose Image</label>
+              <input type="file" class="input-profile" id="imageInput" accept="image/*" hidden>
+          </div>
+          
+            <p id="userName">Name: Loading...</p>
+            <p id="userEmail">Email: Loading...</p>
+            <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
+          </div>
+          <div id="profileDropdown" class="profile-dropdown hidden">
             <p id="userName">Name: Loading...</p>
             <p id="userEmail">Email: Loading...</p>
             <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
@@ -260,6 +274,7 @@
   <!-- Link to the external JavaScript in the js folder -->
   <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
   <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
   <script src="js/index.js"></script>
   <!--   *****   JQuery Link   *****   -->

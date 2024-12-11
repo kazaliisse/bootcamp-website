@@ -8,6 +8,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/applications.css') }}"
     />
+    <!-- SweetAlert2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -40,8 +45,10 @@
             <th>County</th>
             <th>Course</th>
             <th>Resume</th>
+            <th>Status</th>
+            <!-- Added Status Column -->
             <th>Actions</th>
-            <!-- Added Actions column -->
+            <!-- Actions column -->
           </tr>
         </thead>
         <tbody>
@@ -67,8 +74,15 @@
               {% else %} No resume uploaded {% endif %}
             </td>
 
+            <!-- Status Column -->
             <td>
-              <!-- Actions Container -->
+              <span class="status-label {{ application.status | lower }}"
+                >{{ application.status }}</span
+              >
+            </td>
+
+            <!-- Actions -->
+            <td>
               <div class="actions-container">
                 <form
                   action="/accept_application/{{ application.id }}"
@@ -86,7 +100,6 @@
                   <button type="submit" class="btn btn-danger">Decline</button>
                 </form>
 
-                <!-- Delete Form -->
                 <form
                   action="/delete_application/{{ application.id }}"
                   method="POST"

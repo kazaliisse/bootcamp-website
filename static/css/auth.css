@@ -1,8 +1,13 @@
+:root {
+  --primary-color: #edede9; /* Blue */
+  --secondary-color: #d6ccc2; /* */
+}
+
 .auth-container {
   max-width: 400px;
   margin: 6rem auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--primary-color);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -27,15 +32,15 @@ input {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--secondary-color);
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--primary-color);
 }
 
 p {
@@ -167,16 +172,17 @@ a:hover {
   padding: 8px 12px;
   font-size: 14px;
   text-align: center;
-  color: #fff;
-  background-color: rgb(247, 4, 37);
+  color: black;
+  background-color: var(--secondary-color);
   border: none;
   border-radius: 4px;
+  width: 30%;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: orangered;
+  background-color: var(--primary-color);
 }
 
 /* Animation for Dropdown */

@@ -38,6 +38,15 @@
             onclick="toggleProfileMenu()"
           />
           <div id="profileDropdown" class="profile-dropdown hidden">
+            <div class="upload-container">
+              <h2>Upload Profile Image</h2>
+              <div class="image-preview" id="imagePreview">
+                  <img src="" alt="Profile Image" id="profileImage" class="hidden">
+              </div>
+              <label for="imageInput" class="custom-file-label">Choose Image</label>
+              <input type="file" class="input-profile" id="imageInput" accept="image/*" hidden>
+          </div>
+          
             <p id="userName">Name: Loading...</p>
             <p id="userEmail">Email: Loading...</p>
             <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
@@ -232,7 +241,7 @@
             <h3>Get In Touch</h3>
             <form>
               <input type="email" placeholder="Email Address" required />
-              <button type="submit">send me email</button>
+              <button type="submit" class="email">send me email</button>
             </form>
             <!-- Social Media Icons -->
             <div class="social-icons">

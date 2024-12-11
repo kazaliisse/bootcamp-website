@@ -91,6 +91,20 @@
             onclick="toggleProfileMenu()"
           />
           <div id="profileDropdown" class="profile-dropdown hidden">
+            <div class="upload-container">
+              <h2>Upload Profile Image</h2>
+              <div class="image-preview" id="imagePreview">
+                  <img src="" alt="Profile Image" id="profileImage" class="hidden">
+              </div>
+              <label for="imageInput" class="custom-file-label">Choose Image</label>
+              <input type="file" class="input-profile" id="imageInput" accept="image/*" hidden>
+          </div>
+          
+            <p id="userName">Name: Loading...</p>
+            <p id="userEmail">Email: Loading...</p>
+            <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
+          </div>
+          <div id="profileDropdown" class="profile-dropdown hidden">
             <p id="userName">Name: Loading...</p>
             <p id="userEmail">Email: Loading...</p>
             <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
@@ -168,15 +182,16 @@
           Your browser does not support the video tag.
       </video>
       <div class="content">
-          <p class="tagline">IN FOCUS</p>
-          <h1>Climate change is here. But we are fighting back.</h1>
+          <p class="tagline">Beautiful compound</p>
+          <h1>Learn to day to earn tomorrow</h1>
           <p class="description">
-              With the FAO Strategy on Climate Change and its Action Plan, we are taking steps to build a better future for all.
+              Join us in our journey to learn and grow as a global citizen.
+             
           </p>
           <div class="buttons">
-              <button class="btn">🌍 Interactive story</button>
-              <button class="btn">📘 Climate Change</button>
-              <button class="btn">📖 FAO at COP29</button>
+              <button class="btn">🌍 Interactive compound</button>
+              <button class="btn">📘 future engineers</button>
+              <button class="btn">📖 Al-Noor Bootcamp</button>
           </div>
       </div>
   </section>
@@ -321,5 +336,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   </body>
 </html>

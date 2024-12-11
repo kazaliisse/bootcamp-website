@@ -124,3 +124,42 @@ window.onload = function () {
 
 // // Auto-slide every 3 seconds
 // setInterval(nextSlide, 3000);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const imageInput = document.getElementById("imageInput");
+  const profileImage = document.getElementById("profileImage");
+  const customFileLabel = document.querySelector(".custom-file-label");
+
+  // Load the saved image from localStorage on page load
+  const savedImage = localStorage.getItem("profileImage");
+  if (savedImage) {
+    profileImage.src = savedImage;
+    profileImage.classList.remove("hidden");
+  }
+
+  // Show the file picker when label is clicked
+  customFileLabel.addEventListener("click", () => {
+    imageInput.click();
+  });
+
+  // Handle the file input change event
+  imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      // Load the file and display it
+      reader.onload = (e) => {
+        const imageData = e.target.result;
+        profileImage.src = imageData;
+        profileImage.classList.remove("hidden");
+
+        // Save the image data URL in localStorage
+        localStorage.setItem("profileImage", imageData);
+      };
+
+      reader.readAsDataURL(file); // Read the file as a data URL
+    }
+  });
+});
