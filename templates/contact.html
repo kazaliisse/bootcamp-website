@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-< lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al Noor Bootcamp</title>
+    <title>TechElevate University</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/my website logo.png">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -57,7 +58,10 @@
     }
   </style>
     <nav class="navbar">
-        <div class="navbar-logo">Al Noor Bootcamp</div>
+      <div class="navbar-logo" style="display: flex; align-items: center; gap: 10px;">
+        <img src="/static/images/my website logo.png" alt="TechElevate University Logo" style="height: 60px; width: auto;">
+        <h3 class="navbar-title">TechElevate University</h3>
+    </div>
         <div class="nav-links">
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('about') }}">About Us</a>
@@ -106,8 +110,10 @@
     <div id="loading-screen">
       <div class="loader"></div>
     </div>
+   
     
     <section id="contact-section" class="contact-us-section">
+      <aside><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1021305.4295836652!2d39.919285642675796!3d-0.752375412345066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1734366127682!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></aside>
         <h2>Get In Touch</h2>
         <form id="contact-form" method="POST" action="/contact" onsubmit="submitApplication(event)">
             <div class="form-group">
@@ -142,7 +148,9 @@
         <div id="success-message" class="popup">
             <p>Thank you for contacting us!</p>
         </div>
+      
     </section>
+   
 
     <footer class="footer">
         <div class="container">

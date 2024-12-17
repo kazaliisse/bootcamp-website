@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al Noor Bootcamp</title>
+    <title>TechElevate University</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/my website logo.png">
     <!-- Link to the external CSS in the css folder -->
     <link
       rel="stylesheet"
@@ -73,7 +74,10 @@
 
 
     <nav class="navbar">
-      <div class="navbar-logo">Al Noor Bootcamp</div>
+      <div class="navbar-logo" style="display: flex; align-items: center; gap: 10px;">
+        <img src="/static/images/my website logo.png" alt="TechElevate University Logo" style="height: 60px; width: auto;">
+        <h3 class="navbar-title">TechElevate University</h3>
+    </div>
       <div class="nav-links">
         <a href="{{ url_for('home') }}">Home</a>
         <a href="{{ url_for('about') }}">About Us</a>
@@ -190,8 +194,8 @@
           </p>
           <div class="buttons">
               <button class="btn">🌍 Interactive compound</button>
-              <button class="btn">📘 future engineers</button>
-              <button class="btn">📖 Al-Noor Bootcamp</button>
+              <button class="btn">📘 future tech engineers</button>
+              <button class="btn">📖 TechElevate University</button>
           </div>
       </div>
   </section>

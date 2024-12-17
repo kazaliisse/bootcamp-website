@@ -82,6 +82,17 @@ button.delete:hover {
   justify-content: flex-start; /* Align buttons to the left */
   align-items: center; /* Vertically center the buttons */
 }
+
+.pagination a {
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.pagination .current-page {
+  font-weight: bold;
+  color: #333;
+}
+
 header {
   background-color: #343a40;
   color: white;

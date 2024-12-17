@@ -75,24 +75,25 @@
       </table>
 
       <!-- Pagination Controls -->
-      <div class="pagination">
-        {% if page > 1 %}
-        <a
-          href="{{ url_for('view_contacts', page=page-1, search=request.args.get('search', '')) }}"
-          >Previous</a
-        >
-        {% endif %}
-        <span
-          >Page {{ page }} of {{ (total // per_page) + (1 if total % per_page >
-          0 else 0) }}</span
-        >
-        {% if page < (total // per_page) + (1 if total % per_page > 0 else 0) %}
-        <a
-          href="{{ url_for('view_contacts', page=page+1, search=request.args.get('search', '')) }}"
-          >Next</a
-        >
-        {% endif %}
-      </div>
-    </div>
+     <!-- Pagination Controls -->
+<div class="pagination">
+  {% if page > 1 %}
+    <a href="{{ url_for('view_contacts', page=page-1, search=request.args.get('search', '')) }}">Previous</a>
+  {% endif %}
+
+  <!-- Display page numbers -->
+  {% for p in range(1, (total // per_page) + 2) %}
+    {% if p == page %}
+      <span class="current-page">{{ p }}</span>
+    {% else %}
+      <a href="{{ url_for('view_contacts', page=p, search=request.args.get('search', '')) }}">{{ p }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page < (total // per_page) + (1 if total % per_page > 0 else 0) %}
+    <a href="{{ url_for('view_contacts', page=page+1, search=request.args.get('search', '')) }}">Next</a>
+  {% endif %}
+</div>
+
   </body>
 </html>

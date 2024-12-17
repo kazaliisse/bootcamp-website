@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, send_from_directory
+from new_password import password_reset_bp
 from auth import auth  # Importing the auth blueprint
 import smtplib  # Add this line for sending emails
 from flask_mail import Mail, Message  # Importing Flask-Mail
@@ -7,13 +8,16 @@ from email.mime.text import MIMEText  # For plain text email body
 from email.mime.multipart import MIMEMultipart  # For complex email messages
 import os
 from werkzeug.utils import secure_filename
-
+from flask_mail import Mail, Message
 app = Flask(__name__)
 
 # Secret key for session management (required for flash messages)
 app.secret_key = '64f6c772360b516a3807929b92468124af4aa4ba4ab61cdd3b1f18e46e194457'
 # Register the auth blueprint with the app
 app.register_blueprint(auth, url_prefix='/auth')
+
+# Register the password reset blueprint with the app
+app.register_blueprint(password_reset_bp, url_prefix='/password-reset')
 
 
 
@@ -93,7 +97,7 @@ def view_contacts():
     search = request.args.get('search', '')  
     page = request.args.get('page', 1, type=int)
     # Number of records per page
-    per_page = 10  
+    per_page = 40  
     offset = (page - 1) * per_page
 
     conn = get_db_connection()

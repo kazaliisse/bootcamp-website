@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Request Password Reset</title>
+    <title>Reset Your Password</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -80,24 +80,41 @@
   </head>
   <body>
     <div class="container">
-      <h2>Request Password Reset</h2>
+      <h2>Reset Your Password</h2>
       <form
-        action="{{ url_for('password_reset.send_reset_code') }}"
+        action="{{ url_for('password_reset.reset_password') }}"
         method="POST"
       >
-        <label for="email">Email:</label>
+        <label for="reset_code">Reset Code:</label>
         <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email"
+          type="text"
+          name="reset_code"
+          id="reset_code"
+          placeholder="Enter reset code"
           required
         />
-        <button type="submit">Send Reset Code</button>
+
+        <label for="new_password">New Password:</label>
+        <input
+          type="password"
+          name="new_password"
+          id="new_password"
+          placeholder="Enter new password"
+          required
+        />
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          placeholder="Confirm new password"
+          required
+        />
+
+        <button type="submit">Submit New Password</button>
       </form>
-      <p class="footer-text">
-        Please provide your registered email to receive a reset code.
-      </p>
+      <p class="footer-text">Ensure your new password is strong and secure.</p>
     </div>
   </body>
 </html>

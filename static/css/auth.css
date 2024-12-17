@@ -12,8 +12,29 @@
   border-radius: 8px;
 }
 
+.login-button1 i {
+  background-color: #f72585;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .auth-form {
   display: none;
+}
+.auth-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  color: #f72585;
+  margin-top: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-decoration: underline;
+  text-decoration: underline;
 }
 
 .auth-form.active {
@@ -32,11 +53,17 @@ input {
 button {
   width: 100%;
   padding: 12px;
-  background-color: var(--secondary-color);
+  background-color: #f72585;
   color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Add transition effects */
+  transition: color 0.3s ease;
+  width: 30%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 button:hover {
@@ -139,7 +166,7 @@ a:hover {
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: #41f10b;
+  background-color: #f72585;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

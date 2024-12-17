@@ -32,8 +32,26 @@ body {
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.navbar-logo img {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-title {
+  font-size: 20px;
   font-weight: bold;
+  background: linear-gradient(90deg, #4caf50, #00bcd4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin: 0;
 }
 
 .nav-links {
@@ -52,6 +70,7 @@ body {
   opacity: 0.3;
   transition: 0.3s;
   text-decoration: underline;
+  color: #f72585;
 }
 
 /* Toggle Menu - hamburger icon */
@@ -121,7 +140,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   font-family: "Arial", sans-serif;
-  color: black; /* Darker text color */
+  color: #f72585;
 }
 
 /* Form Group Styles */
@@ -153,7 +172,7 @@ body {
 
 /* Submit Button Styles */
 #apply-submit-button {
-  background-color: var(--primary-color);
+  background-color: #f72585;
   color: black;
   padding: 10px 20px;
   border: none;
@@ -167,6 +186,42 @@ body {
 #apply-submit-button:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px); /* Slight lift effect */
+}
+#clear-resume-btn {
+  background-color: #f72585;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Add transition effects */
+  width: 20%; /* Full width button */
+}
+
+#clear-resume-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px); /* Slight lift effect */
+}
+#resume-apply {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s;
+  text-decoration: underline;
+  padding: 20px 20px;
+}
+
+input[type="file"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Success Message Styles */
@@ -182,7 +237,7 @@ body {
 
 /* footer start */
 .footer {
-  background-color: var(--secondary-color); /* Dark Blue background */
+  background-color: var(--secondary-color);
   color: black;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
@@ -218,6 +273,17 @@ body {
 .footer-column h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: #f72585;
+}
+.footer-column p {
+  text-align: justify;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  max-width: 250px;
+  margin-bottom: 2rem;
 }
 
 .footer-column ul {
@@ -233,35 +299,40 @@ body {
   color: black;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .footer-column ul li a:hover {
-  color: var(--primary-color);
+  color: #f72585;
 }
-
+.footer-column {
+  border-right: solid 3px black;
+}
 .newsletter input[type="email"] {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
   margin-right: 1rem;
-  width: 80%;
-}
-.email {
-  color: black;
-  width: 50%;
+  width: 60%;
 }
 
 .newsletter button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color); /* Button color */
+  background-color: #f72585;
   color: black;
   cursor: pointer;
+  width: 40%;
 }
 
 .newsletter button:hover {
   opacity: 0.8;
+  background-color: var(--primary-color);
 }
 
 .social-icons {
@@ -276,7 +347,7 @@ body {
 }
 
 .social-icons a:hover {
-  color: var(--primary-color);
+  color: #f72585;
 }
 
 .contact-info p {
@@ -288,6 +359,9 @@ body {
   margin-top: 2rem;
   border-top: 1px solid #ffffff50;
   padding-top: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 /* footer end */
 

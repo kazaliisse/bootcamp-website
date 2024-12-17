@@ -115,19 +115,25 @@
       </table>
 
       <!-- Pagination Controls -->
-      <div class="pagination">
-        {% if page > 1 %}
-        <a href="{{ url_for('view_applications', page=page-1, search=search) }}"
-          >Previous</a
-        >
-        {% endif %}
-        <span>Page {{ page }}</span>
-        {% if page * per_page < total %}
-        <a href="{{ url_for('view_applications', page=page+1, search=search) }}"
-          >Next</a
-        >
-        {% endif %}
-      </div>
-    </div>
+      <!-- Pagination Controls -->
+<div class="pagination">
+  {% if page > 1 %}
+    <a href="{{ url_for('view_applications', page=page-1, search=search) }}">Previous</a>
+  {% endif %}
+
+  <!-- Display page numbers -->
+  {% for p in range(1, total // per_page + 2) %}
+    {% if p == page %}
+      <span class="current-page">{{ p }}</span>
+    {% else %}
+      <a href="{{ url_for('view_applications', page=p, search=search) }}">{{ p }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page * per_page < total %}
+    <a href="{{ url_for('view_applications', page=page+1, search=search) }}">Next</a>
+  {% endif %}
+</div>
+
   </body>
 </html>

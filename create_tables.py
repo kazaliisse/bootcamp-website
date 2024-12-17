@@ -11,6 +11,7 @@ try:
                         name TEXT NOT NULL,
                         email TEXT NOT NULL UNIQUE,
                         password TEXT NOT NULL
+
                     )''')
 
     # Create a contacts table
@@ -36,16 +37,18 @@ try:
                          resume_path TEXT
                         status TEXT DEFAULT 'Pending' -- Status column added
                     )''')
-
-    # Create a reset_tokens table
+    # Create the reset_tokens table
     cursor.execute('''CREATE TABLE IF NOT EXISTS reset_tokens (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        email TEXT NOT NULL,
-                        token TEXT NOT NULL,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                    )''')
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT NOT NULL,
+    token TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expiration_time TIMESTAMP
+);
+''')
 
-    # Commit the changes
+
+ 
     conn.commit()
     print("Tables created successfully.")
 except Exception as e:

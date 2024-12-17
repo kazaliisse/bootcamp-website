@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #edede9; /* Blue */
-  --secondary-color: #d6ccc2; /* */
+  --primary-color: #edede9;
+  --secondary-color: #d6ccc2;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+DE+Grund:wght@100..400&display=swap");
@@ -32,8 +32,26 @@ body {
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.navbar-logo img {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-title {
+  font-size: 20px;
   font-weight: bold;
+  background: linear-gradient(90deg, #4caf50, #00bcd4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin: 0;
 }
 
 .nav-links {
@@ -52,6 +70,7 @@ body {
   opacity: 0.3;
   transition: 0.3s;
   text-decoration: underline;
+  color: #f72585;
 }
 
 /* Toggle Menu - hamburger icon */
@@ -179,7 +198,7 @@ body {
 
 .explore-btn {
   padding: 10px 20px;
-  background-color: var(--secondary-color);
+  background-color: #f72585;
   border: none;
   color: black;
   font-size: 1.2rem;
@@ -187,6 +206,7 @@ body {
   transition: background-color 0.3s;
   border-radius: 8px;
   animation: fadeInBtn 2s ease-in-out; /* Added animation */
+  width: 30%;
 }
 
 @keyframes fadeInBtn {
@@ -247,24 +267,28 @@ body {
 .card h2 {
   font-size: 2rem;
   margin-bottom: 15px;
-  color: black;
+  color: #f72585;
 }
 
 .card p {
   font-size: 1.2rem;
   margin-bottom: 20px;
   color: black;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .outline-btn {
   padding: 10px 20px;
   border: 2px solid black;
-  background-color: transparent;
+  background-color: #f72585;
   color: black;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 5px;
+  width: 30%;
 }
 
 .outline-btn:hover {
@@ -326,9 +350,17 @@ body {
 .footer-column h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: #f72585;
 }
 .footer-column p {
   text-align: justify;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  max-width: 250px;
+  margin-bottom: 2rem;
 }
 
 .footer-column ul {
@@ -344,10 +376,15 @@ body {
   color: black;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .footer-column ul li a:hover {
-  color: var(--secondary-color);
+  color: #f72585;
 }
 .footer-column {
   border-right: solid 3px black;
@@ -364,7 +401,7 @@ body {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color);
+  background-color: #f72585;
   color: black;
   cursor: pointer;
   width: 40%;
@@ -372,7 +409,7 @@ body {
 
 .newsletter button:hover {
   opacity: 0.8;
-  background-color: rgba(174, 166, 177, 0);
+  background-color: var(--primary-color);
 }
 
 .social-icons {
@@ -387,7 +424,7 @@ body {
 }
 
 .social-icons a:hover {
-  color: var(--primary-color); /* Secondary color for hover */
+  color: #f72585;
 }
 
 .contact-info p {
@@ -399,6 +436,9 @@ body {
   margin-top: 2rem;
   border-top: 1px solid #ffffff50;
   padding-top: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 /* footer end */
 
@@ -417,6 +457,7 @@ body {
   position: relative;
   display: inline-block;
   animation: zoomInTitle 1.5s ease-in-out; /* Added animation */
+  color: #f72585;
 }
 
 @keyframes zoomInTitle {
@@ -444,6 +485,9 @@ body {
   color: black;
   font-size: 1.1rem;
   animation: fadeInText 1.5s ease-in-out; /* Reusing fadeInText animation */
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Container holding the features */
@@ -465,7 +509,7 @@ body {
   animation: slideInFeature 1.5s ease-in-out; /* Added animation */
 }
 .feature h3 {
-  color: black;
+  color: #f72585;
 }
 
 @keyframes slideInFeature {
@@ -488,7 +532,7 @@ body {
 /* Ensure icons are centered */
 .icon {
   font-size: 40px;
-  color: var(--primary-color);
+  color: #f72585;
   margin-bottom: 15px;
   text-align: center;
 }
@@ -526,7 +570,7 @@ body {
 .counter {
   font-size: 60px;
   font-weight: bold;
-  color: #a30000; /* Red color */
+  color: #f72585;
   margin-bottom: 10px;
   font-family: "Arial", sans-serif;
   transition: transform 0.3s ease-in-out;
@@ -583,7 +627,7 @@ section.header {
   align-items: center;
   padding: 60px 100px;
   background-color: var(--primary-color);
-  color: white;
+  color: #f72585;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -594,16 +638,25 @@ section.header {
 .header h1 {
   font-size: 40px;
   margin-bottom: 20px;
-  color: black;
+  color: #f72585;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 .header p {
   font-size: 16px;
   margin-bottom: 20px;
   line-height: 1.6;
   color: #000;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 .buttons {
   margin-top: 20px;
+}
+.buttons a {
+  background-color: #f72585;
 }
 .btn {
   padding: 12px 24px;
@@ -612,10 +665,11 @@ section.header {
   font-size: 14px;
   margin-right: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #f72585;
 }
 
 .btn-primary {
-  background-color: #00c4ff;
+  background-color: #f72585;
   color: black;
 }
 
@@ -717,14 +771,20 @@ section.about-us {
 }
 .about-us h2 {
   font-size: 36px;
-  color: black;
+  color: #f72585;
   margin-bottom: 20px;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
 }
 .about-us p {
   font-size: 16px;
   color: black;
   line-height: 1.6;
   margin-bottom: 15px;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .about-us .image-container img {
@@ -740,13 +800,21 @@ section.about-us {
   background-color: var(--primary-color);
   text-align: center;
   animation: fadeInSection 1.5s ease-in-out;
+  font-family: "Playwrite DE Grund", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .offer-section-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: black;
+  color: #f72585;
   animation: fadeInText 1.5s ease-in-out;
+  font-family: "Playwrite DE Grund", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .offer-section-description {
@@ -782,25 +850,33 @@ section.about-us {
 
 .offer-feature-card .icon {
   font-size: 40px;
-  color: #ffc107;
+  color: #f72585;
   margin-bottom: 15px;
 }
 
 .offer-feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: black;
+  color: #f72585;
+  font-family: "Playwrite DE Grund", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .offer-feature-card p {
   font-size: 1rem;
   color: black;
   margin-bottom: 15px;
+  font-family: "Playwrite DE Grund", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .offer-learn-more {
   font-size: 1rem;
-  color: var(--secondary-color);
+  color: #f72585;
   text-decoration: none;
 }
 
@@ -865,6 +941,9 @@ section.about-us {
   padding: 20px;
   max-width: 600px;
 }
+/* .content p {
+  color: #f72585;
+} */
 
 .tagline {
   font-size: 16px;
@@ -878,6 +957,7 @@ h1 {
   font-size: 40px;
   line-height: 1.4;
   margin: 0 0 20px 0;
+  color: #f72585;
 }
 
 .description {
@@ -893,7 +973,7 @@ h1 {
 }
 
 .btn {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #f72585;
   color: #fff;
   border: 1px solid #fff;
   padding: 10px 15px;
@@ -901,8 +981,8 @@ h1 {
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.3s ease;
+  width: 40%;
 }
-
 .btn:hover {
   background-color: #fff;
   color: #000;
@@ -1010,7 +1090,7 @@ h1 {
 
 .our-courses h1 {
   font-size: 2.5rem;
-  color: black;
+  color: #f72585;
   margin-top: 40px;
   position: relative;
 }
@@ -1065,7 +1145,7 @@ h1 {
 .course-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: black;
+  color: #f72585;
 }
 
 .course-card p {
@@ -1165,7 +1245,7 @@ h1 {
 
 .technical-mentors h4 {
   font-size: 2rem;
-  color: black;
+  color: #f72585;
   margin-bottom: 10px;
   position: relative;
 }
@@ -1220,7 +1300,7 @@ h1 {
 .mentor-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: black;
+  color: #f72585;
 }
 
 .mentor-card p {
@@ -1313,7 +1393,7 @@ h1 {
 /* contact styling */
 .contact-us-section {
   padding: 40px;
-  background-color: #606c38;
+  background-color: var(--secondary-color);
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -1322,7 +1402,8 @@ h1 {
 .contact-us-section h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: white;
+  color: #f72585;
+  margin-top: 50px;
 }
 
 .form-group {
@@ -1334,7 +1415,6 @@ h1 {
   margin-bottom: 5px;
   font-size: 1rem;
   color: #333;
-  color: white;
 }
 
 .form-group input,
@@ -1348,17 +1428,19 @@ h1 {
 
 #contact-submit {
   padding: 10px 20px;
-  background-color: #283618;
+  background-color: #f72585;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
+  width: 15%;
 }
 
 #contact-submit:hover {
-  background-color: #606c38;
+  background-color: var(--primary-color);
 }
 
 /* Popup for success message */
@@ -1596,4 +1678,10 @@ h2.upload-container {
 }
 .input-profile {
   display: none;
+}
+
+aside {
+  margin-top: 60px;
+
+  border-radius: 10px;
 }

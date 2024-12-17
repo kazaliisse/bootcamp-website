@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al Noor Bootcamp</title>
+    <title>TechElevate University</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/my website logo.png">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/apply.css') }}"
@@ -18,25 +19,11 @@
     />
   </head>
   <body>
-    <!-- <style>
-      .logout-button {
-    background-color: #ff4d4d; /* Red color */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.logout-button:hover {
-    background-color: #cc0000; /* Darker red on hover */
-}
-
-    </style> -->
+   
     <nav class="navbar">
-      <div class="navbar-logo">Al Noor Bootcamp</div>
+      <div class="navbar-logo" style="display: flex; align-items: center; gap: 10px;">
+        <img src="/static/images/my website logo.png" alt="TechElevate University Logo" style="height: 60px; width: auto;">
+        <h3 class="navbar-title">TechElevate University</h3>
       <div class="nav-links">
         <a href="{{ url_for('home') }}">Home</a>
         <a href="{{ url_for('about') }}">About Us</a>
@@ -44,7 +31,7 @@
         <a href="{{ url_for('mentors') }}">Technical Mentor</a>
         <a href="{{ url_for('contact') }}">Contact Us</a>
         <a href="{{ url_for('apply') }}">Apply</a>
-        <a href="{{ url_for('auth') }}" class="login-button">
+        <a href="{{ url_for('auth') }}" class="login-button1">
           <i class="fas fa-sign-in-alt"></i> Login
         </a>
         
@@ -77,7 +64,7 @@
       <div class="auth-container">
         <!-- Login Form -->
         <div id="login-form" class="auth-form active">
-          <h2>Login</h2>
+          <h2>Login form</h2>
           <form id="loginForm" onsubmit="return validateLogin()">
             <input type="email" id="loginEmail" placeholder="Email" required />
             <input
@@ -89,7 +76,9 @@
             <button type="submit">Login</button>
             <p>
               Forgot Password?
-              <a href="#" onclick="switchTab('reset')">Reset it</a>
+              <a href="{{ url_for('password_reset.send_reset_code') }}">Reset it here</a>
+
+
             </p>
             <p>
               Don't have an account?
@@ -132,7 +121,7 @@
         </div>
 
         <!-- Reset Password Form -->
-<div id="reset-form" class="auth-form">
+<!-- <div id="reset-form" class="auth-form">
   <h2>Reset Password</h2>
   <form id="resetForm" onsubmit="return validateReset()">
       <input
@@ -147,7 +136,8 @@
           <a href="#" onclick="switchTab('login')">Login</a>
       </p>
   </form>
-</div>
+</div> -->
+
     </section>
 
     <footer class="footer">
