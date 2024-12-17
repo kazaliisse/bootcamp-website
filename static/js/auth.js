@@ -209,3 +209,20 @@ function fetchUserProfile() {
       console.error("Error fetching user profile:", error);
     });
 }
+
+function switchTab(tabName) {
+  // Get all auth forms
+  const loginForm = document.getElementById("login-form");
+  const signupForm = document.getElementById("signup-form");
+
+  // Hide all forms
+  loginForm.classList.remove("active");
+  signupForm.classList.remove("active");
+
+  // Show the selected form
+  if (tabName === "login") {
+    loginForm.classList.add("active");
+  } else if (tabName === "signup") {
+    signupForm.classList.add("active");
+  }
+}
