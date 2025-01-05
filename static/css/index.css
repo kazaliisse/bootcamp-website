@@ -1685,3 +1685,107 @@ aside {
 
   border-radius: 10px;
 }
+
+/* Testimonials Section */
+#testimonials {
+  padding: 50px 20px;
+  background: #f4f4f9;
+  text-align: center;
+}
+
+#testimonials h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.testimonial-slider {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonial {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial.active {
+  display: block;
+  opacity: 1;
+}
+
+.testimonial-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  margin-bottom: 15px;
+}
+
+blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #555;
+  margin: 10px 0;
+}
+
+.testimonial p {
+  color: #333;
+  font-weight: bold;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10; /* Ensures buttons are on top */
+}
+
+.slider-btn:hover {
+  background: #0056b3;
+}
+
+.prev-btn {
+  left: 10px; /* Adjust for visibility */
+}
+
+.next-btn {
+  right: 10px; /* Adjust for visibility */
+}
+
+@media (max-width: 768px) {
+  .slider-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .prev-btn {
+    left: -40px;
+  }
+
+  .next-btn {
+    right: -40px;
+  }
+}

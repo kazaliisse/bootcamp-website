@@ -72,8 +72,6 @@
         <img src="/static/images/my website logo.png" alt="TechElevate University Logo" style="height: 60px; width: auto;">
         <h3 class="navbar-title">TechElevate University</h3>
     </div>
-    
-    
       <div class="nav-links">
         <a href="{{ url_for('home') }}">Home</a>
         <a href="{{ url_for('about') }}">About Us</a>
@@ -215,6 +213,41 @@
         </div>
       </div>
     </section>
+
+    <!-- testimonials sections -->
+    <section id="testimonials">
+      <h2>What Our Students Say</h2>
+      <div class="testimonial-slider">
+        <button class="slider-btn prev-btn" aria-label="Previous Testimonial">
+          <span>&#10094;</span> <!-- Left Arrow Icon -->
+        </button>
+        <div class="testimonial active">
+          <img class="testimonial-photo" src="student1.jpg" alt="Student 1">
+          <blockquote>"This bootcamp changed my life!"</blockquote>
+          <p>- John Doe</p>
+        </div>
+        <div class="testimonial">
+          <img class="testimonial-photo" src="student2.jpg" alt="Student 2">
+          <blockquote>"I landed my dream job after completing the courses."</blockquote>
+          <p>- Jane Smith</p>
+        </div>
+        <div class="testimonial">
+          <img class="testimonial-photo" src="student3.jpg" alt="Student 3">
+          <blockquote>"The mentors were incredibly supportive."</blockquote>
+          <p>- Alex Johnson</p>
+        </div>
+        <button class="slider-btn next-btn" aria-label="Next Testimonial">
+          <span>&#10095;</span> <!-- Right Arrow Icon -->
+        </button>
+      </div>
+    </section>
+    
+    
+    
+     <!-- testimonials sections end -->
+
+
+
     <section class="counting-section">
       <div class="counter-container">
           <div class="counter" id="counter1">0</div>

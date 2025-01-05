@@ -339,6 +339,90 @@ def courses():
 def mentors():
     return render_template('mentors.html')
 
+# # anoucements route
+# @app.route('/announcements')
+# def announcements():
+#     conn = get_db_connection()
+#     updates = conn.execute('SELECT * FROM updates ORDER BY date_posted DESC').fetchall()
+#     conn.close()
+#     return render_template('announcements.html', updates=updates)
+
+
+
+# @app.route('/updates')
+# def updates():
+#     conn = get_db_connection()
+#     updates = conn.execute('SELECT * FROM updates').fetchall()
+#     conn.close()
+#     return render_template('updates.html', updates=updates)
+
+
+
+# @app.route('/add_announcement', methods=['GET', 'POST'])
+# def add_announcement():
+#     if request.method == 'POST':
+#         conn = get_db_connection()
+#         title = request.form['title']
+#         description = request.form['description']
+#         posted_by = "Mentor"  # Static value; replace with dynamic user data if needed
+
+#         # Insert data into the 'updates' table
+#         conn.execute(
+#             'INSERT INTO updates (title, description, posted_by) VALUES (?, ?, ?)',
+#             (title, description, posted_by)
+#         )
+#         conn.commit()
+#         conn.close()
+
+#         return redirect(url_for('announcements'))
+
+#     # For GET request, render the form
+#     return render_template('add_announcement.html')
+
+
+
+
+
+
+
+# @app.route('/delete-announcement/<int:id>', methods=('POST',))
+# def delete_announcement(id):
+#     conn = get_db_connection()
+#     conn.execute('DELETE FROM announcements WHERE id = ?', (id,))
+#     conn.commit()
+#     conn.close()
+#     flash('Announcement deleted successfully!')
+#     return redirect(url_for('announcements'))
+
+# @app.route('/edit-announcement/<int:id>', methods=('GET', 'POST'))
+# def edit_announcement(id):
+#     conn = get_db_connection()
+#     announcement = conn.execute('SELECT * FROM announcements WHERE id = ?', (id,)).fetchone()
+
+#     if request.method == 'POST':
+#         title = request.form['title']
+#         description = request.form['description']
+
+#         if not title or not description:
+#             flash('Title and Description are required!')
+#         else:
+#             conn.execute(
+#                 'UPDATE announcements SET title = ?, description = ? WHERE id = ?',
+#                 (title, description, id)
+#             )
+#             conn.commit()
+#             conn.close()
+#             flash('Announcement updated successfully!')
+#             return redirect(url_for('announcements'))
+
+#     conn.close()
+#     return render_template('edit_announcement.html', announcement=announcement)
+
+
+
+
+# # anoucements route end
+
 # Contact Us page route with POST method to handle form submission
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
