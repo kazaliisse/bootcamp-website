@@ -28,7 +28,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'noorhafowbare@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'qjmnwlgthsskjbwy'  
+app.config['MAIL_PASSWORD'] = 'gukb jffz yfoc phyk'  
 
 # Initialize Mail
 mail = Mail(app)
@@ -174,7 +174,7 @@ def view_applications():
 def send_email(to_email, subject, body):
     try:
         sender_email = "noorhafowbare@gmail.com"  # Replace with your email
-        sender_password = "qjmnwlgthsskjbwy"  # Replace with your email password
+        sender_password = "gukb jffz yfoc phyk"  # Replace with your email password
         
         # Setting up the email server
         server = smtplib.SMTP('smtp.gmail.com', 587)

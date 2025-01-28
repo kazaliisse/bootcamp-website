@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the success message after 3 seconds
         setTimeout(() => {
           successMessage.style.display = "none";
-        }, 3000);
+        }, 1000);
 
         // Clear the file input and reset button visibility
         clearFileInput();
