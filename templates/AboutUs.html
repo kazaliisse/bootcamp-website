@@ -95,14 +95,14 @@
             onclick="toggleProfileMenu()"
           />
           <div id="profileDropdown" class="profile-dropdown hidden">
-            <div class="upload-container">
+            <!-- <div class="upload-container">
               <h2>Upload Profile Image</h2>
               <div class="image-preview" id="imagePreview">
                   <img src="" alt="Profile Image" id="profileImage" class="hidden">
               </div>
               <label for="imageInput" class="custom-file-label">Choose Image</label>
               <input type="file" class="input-profile" id="imageInput" accept="image/*" hidden>
-          </div>
+          </div> -->
           
             <p id="userName">Name: Loading...</p>
             <p id="userEmail">Email: Loading...</p>
@@ -242,7 +242,68 @@
       </div>
     </section>
 
+
+
+
+    <section class="stats-section">
+      <h1>More Information</h1>
+      <div class="stats-container">
+        <div class="stat-container">
+          <i class="fas fa-globe"></i>
+          <h2 class="counter" data-target="200">0</h2>
+          <p>Countries & Territories</p>
+        </div>
+        <div class="stat-container">
+          <i class="fas fa-users"></i>
+          <h2 class="counter" data-target="152000">0</h2>
+          <p>Total Students</p>
+        </div>
+        <div class="stat-container">
+          <i class="fas fa-user-friends"></i>
+          <h2 class="counter" data-target="18800">0</h2>
+          <p>Students are refugees</p>
+        </div>
+        <div class="stat-container">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h2 class="counter" data-target="90">0%</h2>
+          <p>Retention Rate</p>
+        </div>
+      </div>
+    
+      <div class="features-container">
+        <div class="feature-container">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>TUITION-FREE</h3>
+          <p>As a tuition-free, university there’s no cost for instruction, books or campus fees.</p>
+        </div>
+        <div class="feature-container">
+          <i class="fas fa-certificate"></i>
+          <h3>AMERICAN ACCREDITED</h3>
+          <p>TechElevate is recognized by Kenya as an accredited university.</p>
+        </div>
+        <div class="feature-container">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>FLEXIBLE</h3>
+          <p>Since TechElevate is 100% both online and physical you can study to fit your schedule anytime, anywhere.</p>
+        </div>
+      </div>
+    
+      <a href="{{ url_for('courses') }}"><button class="view-programs">VIEW OUR PROGRAMS</button></a>
+    </section>
+    
+    
+    
+
+
+
+
+
+    
+
+
     <!-- footer start -->
+
+
 
     <footer class="footer">
       <div class="container">
@@ -334,6 +395,30 @@
       // Show loading screen on page load and hide it when the page is fully loaded
       window.addEventListener("load", hideLoading);
       window.addEventListener("beforeunload", showLoading);
+
+      
+      document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+
+  counters.forEach(counter => {
+    counter.innerText = "0";
+    const target = +counter.getAttribute("data-target");
+    const increment = target / 200;
+
+    const updateCount = () => {
+      const current = +counter.innerText.replace("%", "");
+      if (current < target) {
+        counter.innerText = `${Math.ceil(current + increment)}${counter.dataset.target.includes('%') ? '%' : ''}`;
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.innerText = `${target}${counter.dataset.target.includes('%') ? '%' : ''}`;
+      }
+    };
+    updateCount();
+  });
+});
+
+
     </script>
 
     <!-- AOS JavaScript -->

@@ -184,7 +184,8 @@ body {
 }
 
 #apply-submit-button:hover {
-  background-color: var(--secondary-color);
+  background-color: #4a077c;
+  color: #fff;
   transform: translateY(-2px); /* Slight lift effect */
 }
 #clear-resume-btn {
@@ -200,7 +201,8 @@ body {
 }
 
 #clear-resume-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: #4a077c;
+  color: #fff;
   transform: translateY(-2px); /* Slight lift effect */
 }
 #resume-apply {

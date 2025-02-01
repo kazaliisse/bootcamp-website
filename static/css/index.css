@@ -70,7 +70,7 @@ body {
   opacity: 0.3;
   transition: 0.3s;
   text-decoration: underline;
-  color: #f72585;
+  color: #4a077c;
 }
 
 /* Toggle Menu - hamburger icon */
@@ -219,7 +219,8 @@ body {
 }
 
 .explore-btn:hover {
-  background-color: var(--primary-color);
+  background-color: #4a077c;
+  color: #fff;
 }
 
 /* Mission and Vision Section */
@@ -292,8 +293,8 @@ body {
 }
 
 .outline-btn:hover {
-  background-color: var(--primary-color);
-  color: black;
+  background-color: #4a077c;
+  color: white;
 }
 
 /* Responsive for smaller screens */
@@ -311,136 +312,6 @@ body {
     font-size: 2rem;
   }
 }
-
-/* footer start */
-.footer {
-  background-color: var(--secondary-color);
-  color: black;
-  padding: 2rem 1rem;
-  font-family: Arial, sans-serif;
-  animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
-}
-
-@keyframes fadeInFooter {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-column {
-  flex: 1;
-  margin: 0 1rem;
-  min-width: 200px;
-}
-
-.footer-column h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #f72585;
-}
-.footer-column p {
-  text-align: justify;
-  font-size: 1rem;
-  font-family: "Playwrite GB J Guides", cursive;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.5;
-  max-width: 250px;
-  margin-bottom: 2rem;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-column ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-column ul li a {
-  color: black;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1rem;
-  font-family: "Playwrite GB J Guides", cursive;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.5;
-}
-
-.footer-column ul li a:hover {
-  color: #f72585;
-}
-.footer-column {
-  border-right: solid 3px black;
-}
-.newsletter input[type="email"] {
-  padding: 0.5rem;
-  border: none;
-  border-radius: 5px;
-  margin-right: 1rem;
-  width: 60%;
-}
-
-.newsletter button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #f72585;
-  color: black;
-  cursor: pointer;
-  width: 40%;
-}
-
-.newsletter button:hover {
-  opacity: 0.8;
-  background-color: var(--primary-color);
-}
-
-.social-icons {
-  margin-top: 1rem;
-}
-
-.social-icons a {
-  color: black;
-  font-size: 1.5rem;
-  margin-right: 15px;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #f72585;
-}
-
-.contact-info p {
-  margin: 0.5rem 0;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 2rem;
-  border-top: 1px solid #ffffff50;
-  padding-top: 1rem;
-  font-family: "Playwrite GB J Guides", cursive;
-  font-weight: 400;
-  font-style: italic;
-}
-/* footer end */
 
 /* why you choose us */
 /* Why Choose Us Section */
@@ -657,6 +528,10 @@ section.header {
 }
 .buttons a {
   background-color: #f72585;
+}
+.buttons a:hover {
+  background-color: #4a077c;
+  color: #fff;
 }
 .btn {
   padding: 12px 24px;
@@ -1440,7 +1315,8 @@ h1 {
 }
 
 #contact-submit:hover {
-  background-color: var(--primary-color);
+  background-color: #4a077c;
+  color: #fff;
 }
 
 /* Popup for success message */
@@ -1695,7 +1571,7 @@ aside {
 
 #testimonials h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: #f72585;
   margin-bottom: 30px;
 }
 
@@ -1789,3 +1665,228 @@ blockquote {
     right: -40px;
   }
 }
+
+.stats-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.stats-container,
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.features-container .feature-container {
+  flex-basis: 30%;
+  transition: background 0.3s;
+  animation: slideUp 1s ease-in-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.feature-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: transparent;
+  text-align: center;
+
+  /* CSS animations for features */
+}
+
+.stat-container {
+  background: transparent;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  display: inline-block;
+  animation: slideUp 1s ease-in-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+.stat-container i,
+.feature-container i {
+  font-size: 3rem;
+  color: #f72585;
+  margin-bottom: 10px;
+}
+
+.stat-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+.counter {
+  color: #000;
+}
+
+button.view-programs {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 16px;
+  background-color: #f72585;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  animation: slideUp 1s ease-in-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+button.view-programs:hover {
+  background-color: #4a077c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* footer start */
+.footer {
+  background-color: var(--secondary-color);
+  color: black;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+  animation: fadeInFooter 1.5s ease-in-out; /* Added animation */
+}
+
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 1rem;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #f72585;
+}
+.footer-column p {
+  text-align: justify;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  max-width: 250px;
+  margin-bottom: 2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.footer-column ul li a:hover {
+  color: #f72585;
+}
+.footer-column {
+  border-right: solid 3px black;
+}
+.newsletter input[type="email"] {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  width: 60%;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #f72585;
+  color: black;
+  cursor: pointer;
+  width: 40%;
+}
+
+.newsletter button:hover {
+  opacity: 0.8;
+  background-color: var(--primary-color);
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: black;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f72585;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #ffffff50;
+  padding-top: 1rem;
+  font-family: "Playwrite GB J Guides", cursive;
+  font-weight: 400;
+  font-style: italic;
+}
+/* footer end */
